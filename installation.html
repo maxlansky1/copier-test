@@ -562,15 +562,25 @@ make<span class="w"> </span>html
 <section id="vps">
 <h3>Настройка на стороне VPS<a class="headerlink" href="#vps" title="Ссылка на этот заголовок"></a></h3>
 <ol class="arabic simple">
-<li><p>Создать нового юзера на VPS и ограничить его в правах
-На вашем VPS создайте пользователя, который будет использоваться только для деплоя, и предоставьте ему минимальные права.</p></li>
+<li><p>На вашем VPS создайте пользователя, который будет использоваться только для деплоя. Рассмотрим на примере юзера deployer:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>useradd<span class="w"> </span>deployer
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>adduser<span class="w"> </span>--home<span class="w"> </span>/home/deployer<span class="w"> </span>--shell<span class="w"> </span>/bin/bash<span class="w"> </span>--disabled-password<span class="w"> </span>--gecos<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>deployer
 </pre></div>
 </div>
+<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>:class: dropdown
+Команда создаёт нового пользователя с заданным именем, домашней директорией и оболочкой, но без возможности войти в систему с паролем.
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Настроим права доступа нового юзера</p></li>
+</ol>
 <ul class="simple">
-<li><p>Редактируем sudoers при помощи команды <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">visudo</span></code>. Добавляем внизу такую строчку</p></li>
+<li><p>Редактируем sudoers при помощи команды</p></li>
 </ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>visudo
+</pre></div>
+</div>
+<p>Добавляем внизу такую строку</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>deployer  ALL=(ALL) NOPASSWD: /usr/bin/git, /usr/bin/docker
 </pre></div>
 </div>
@@ -587,25 +597,25 @@ PasswordAuthentication no
 PermitEmptyPasswords no
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+<ul class="simple">
 <li><p>Добавляем юзера deployer в группу docker</p></li>
-</ol>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span>deployer
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
+<li><p>Переключаемся на нового юзера</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>deployer
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
 <li><p>Настройка SSH для юзера deployer</p></li>
 </ol>
 <ul class="simple">
 <li><p>Создаем в домашней директории home/deployer папку .ssh</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/home/deployer/.ssh
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Добавляем админа в группу deployer</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>deployer<span class="w"> </span>admin
 </pre></div>
 </div>
 <ul class="simple">
@@ -624,7 +634,7 @@ PermitEmptyPasswords no
 <ul class="simple">
 <li><p>Копируем ПУБЛИЧНЫЙ ключ SSH в /home/deployer/.ssh/autorized_keys</p></li>
 </ul>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li><p>Настройки прав доступа (необходимо для подключения по ssh)
 Настраиваем следующие права для юзера deployer, его директорий и файлов</p></li>
 </ol>
@@ -634,13 +644,19 @@ PermitEmptyPasswords no
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/deployer/.ssh
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>deployer:deployer<span class="w"> </span>/home/deployer/.ssh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/deployer/.ssh/authorized_keys
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Делаем владельцем папки юзера deployer</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>deployer:deployer<span class="w"> </span>/home/deployer/.ssh
+<ol class="arabic simple" start="6">
+<li><p>Настраиваем copier</p></li>
+<li><p>Настраиваем и открываем порты. Например, порт 55555</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ufw<span class="w"> </span>alow<span class="w"> </span><span class="m">55555</span>/tcp
+sudo<span class="w"> </span>ufw<span class="w"> </span>reload
+sudo<span class="w"> </span>ufw<span class="w"> </span>status
 </pre></div>
 </div>
 </section>
@@ -655,8 +671,23 @@ PermitEmptyPasswords no
 <li><p>SSH_PORT - порт SSH (можно найти в /etc/ssh/sshd_config)</p></li>
 <li><p>SSH_USER - имя юзера (в нашем случае deployer)</p></li>
 <li><p>DEPLOY_PATH - директория на сервере, где будет развернуто приложение (/home/deployer/)</p></li>
-<li><p>TELEGRAM_BOT_KEY - API ключ телеграм бота, которому будут приходить уведомления об успешном деплое</p></li>
+<li><p>TELEGRAM_BOT_TOKEN - API ключ телеграм бота, которому будут приходить уведомления об успешном деплое</p></li>
+<li><p>TELEGRAM_CHAT_ID</p></li>
 </ul>
+<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>TELEGRAM_BOT_TOKEN можно взять у официального бота телеграм @BotFather
+
+TELEGRAM_CHAT_ID можно узнать следующим образом
+1. Делаем запрос в браузере по адресу (замените TELEGRAM_BOT_TOKEN на ключ, полученный у Bot Fater)
+```url
+https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates
+```
+2. Отправляем любое сообщение своему боту
+
+3. Обновляем страницу в браузере
+
+4. Получаем chat_id
+</pre></div>
+</div>
 <ol class="arabic simple" start="2">
 <li><p>Делаем push на гитхаб, получаем уведомление в телеграм</p></li>
 </ol>

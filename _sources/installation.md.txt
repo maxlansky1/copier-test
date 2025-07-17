@@ -375,12 +375,21 @@ HTML-версия документации будет доступна в пап
 Для автоматического деплоя приложения на свой личный сервер следует выполнить следующие шаги:
 
 #### Настройка на стороне VPS
-1. Создать нового юзера на VPS и ограничить его в правах
-На вашем VPS создайте пользователя, который будет использоваться только для деплоя, и предоставьте ему минимальные права. 
+1. На вашем VPS создайте пользователя, который будет использоваться только для деплоя. Рассмотрим на примере юзера deployer:
 ```bash
-useradd deployer
+sudo adduser --home /home/deployer --shell /bin/bash --disabled-password --gecos "" deployer
 ```
-- Редактируем sudoers при помощи команды `sudo visudo`. Добавляем внизу такую строчку
+```note
+:class: dropdown
+Команда создаёт нового пользователя с заданным именем, домашней директорией и оболочкой, но без возможности войти в систему с паролем.
+```
+
+2. Настроим права доступа нового юзера
+- Редактируем sudoers при помощи команды 
+```bash
+sudo visudo
+```
+Добавляем внизу такую строку
 ```text
 deployer  ALL=(ALL) NOPASSWD: /usr/bin/git, /usr/bin/docker
 ```
@@ -397,22 +406,21 @@ PasswordAuthentication no
 PermitEmptyPasswords no
 ```
 
-2. Добавляем юзера deployer в группу docker
+- Добавляем юзера deployer в группу docker
 ```bash
 usermod -aG docker deployer
 ```
 
-3. Настройка SSH для юзера deployer
+3. Переключаемся на нового юзера
+```bash
+sudo su - deployer
+```
+
+4. Настройка SSH для юзера deployer
 - Создаем в домашней директории home/deployer папку .ssh
 ```bash
 sudo mkdir /home/deployer/.ssh
 ```
-
-- Добавляем админа в группу deployer
-```bash
-sudo usermod -aG deployer admin
-```
-
 - Создаем файл /home/deployer/.ssh/autorized_keys
 ```bash
 touch home/deployer/.ssh/autorized_keys
@@ -424,7 +432,7 @@ ssh-keygen -t ed25519 -a 200 -C "github actions"
 ```
 - Копируем ПУБЛИЧНЫЙ ключ SSH в /home/deployer/.ssh/autorized_keys
 
-4. Настройки прав доступа (необходимо для подключения по ssh)
+5. Настройки прав доступа (необходимо для подключения по ssh)
 Настраиваем следующие права для юзера deployer, его директорий и файлов
 ```bash
 sudo chmod go-w /home/deployer
@@ -433,12 +441,19 @@ sudo chmod go-w /home/deployer
 sudo chmod 700 /home/deployer/.ssh
 ```
 ```bash
+sudo chown -R deployer:deployer /home/deployer/.ssh
+```
+```bash
 sudo chmod 600 /home/deployer/.ssh/authorized_keys
 ```
 
-- Делаем владельцем папки юзера deployer
+6. Настраиваем copier
+
+7. Настраиваем и открываем порты. Например, порт 55555
 ```bash
-sudo chown -R deployer:deployer /home/deployer/.ssh
+sudo ufw alow 55555/tcp
+sudo ufw reload
+sudo ufw status
 ```
 
 #### Настройка на стороне GitHub
@@ -448,8 +463,22 @@ sudo chown -R deployer:deployer /home/deployer/.ssh
 - SSH_PORT - порт SSH (можно найти в /etc/ssh/sshd_config)
 - SSH_USER - имя юзера (в нашем случае deployer)
 - DEPLOY_PATH - директория на сервере, где будет развернуто приложение (/home/deployer/)
-- TELEGRAM_BOT_KEY - API ключ телеграм бота, которому будут приходить уведомления об успешном деплое
+- TELEGRAM_BOT_TOKEN - API ключ телеграм бота, которому будут приходить уведомления об успешном деплое
+- TELEGRAM_CHAT_ID
+````note
+TELEGRAM_BOT_TOKEN можно взять у официального бота телеграм @BotFather
 
+TELEGRAM_CHAT_ID можно узнать следующим образом
+1. Делаем запрос в браузере по адресу (замените TELEGRAM_BOT_TOKEN на ключ, полученный у Bot Fater)
+```url
+https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates
+```
+2. Отправляем любое сообщение своему боту
+
+3. Обновляем страницу в браузере
+
+4. Получаем chat_id
+````
 2. Делаем push на гитхаб, получаем уведомление в телеграм
 
 ### ✅ Резюме
