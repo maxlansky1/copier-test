@@ -68,6 +68,9 @@ jobs:
             # Полностью откатываем любые локальные изменения
             git reset --hard
 
+            # Настройка git для автоматического слияния
+            git config pull.rebase false
+            
             # Подтягиваем изменения из main
             git pull
 
