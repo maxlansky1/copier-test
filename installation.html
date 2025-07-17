@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚙️ Getting started: Установка и настройка шаблона &mdash; документация projectTemplate 0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=490fdf2e"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="🗺️ Roadmap: как работать с шаблоном" href="basics.html" />
+    <link rel="prev" title="📜 Overview: Обзор шаблона" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            projectTemplate
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">📜 Overview: Обзор шаблона</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">⚙️ Getting started: Установка и настройка шаблона</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python">Установка и настройка Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visual-studio-code">💻 Установка Visual Studio Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows-vs-code">Настройки терминала Windows для работы с VS Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Шаги настройки</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#notepad">Notepad++</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Установка</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#git-github">🔄 Git и Github</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#git-windows">Минимальная установка Git на Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#copier">📐 Copier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Копирование шаблона проекта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Обновление шаблона проекта с помощью copier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">⚙️ Виртуальное окружение</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Создание виртуального окружения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Установка зависимостей</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements-txt">Как обновить <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Пример:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pre-commit">🕵️‍♂️ Подключение pre-commit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Что такое pre-commit?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Запуск pre-commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Хуки</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">📚 Работа с документацией</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Для Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Для Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ci-cd">CI/CD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vps">Настройка на стороне VPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github">Настройка на стороне GitHub</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">✅ Резюме</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">🗺️ Roadmap: как работать с шаблоном</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recommendations.html">Recommendations: Полезные дополнения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">projectTemplate</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">⚙️ Getting started: Установка и настройка шаблона</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.md.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>⚙️ Getting started: Установка и настройка шаблона<a class="headerlink" href="#getting-started" title="Ссылка на этот заголовок"></a></h1>
+<section id="python">
+<h2>Установка и настройка Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок"></a></h2>
+</section>
+<section id="visual-studio-code">
+<h2>💻 Установка Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Ссылка на этот заголовок"></a></h2>
+<p>Visual Studio Code — это бесплатный, мощный редактор исходного кода с поддержкой множества языков программирования и расширений.</p>
+<p>Он нужен для написания и редактирования кода, работы с версиями и интеграции с различными инструментами разработки.</p>
+<p>Чтобы установить:</p>
+<ol class="arabic simple">
+<li><p>Перейди на официальный сайт <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a>.</p></li>
+<li><p>Выбери нужную версию для своей операционной системы (Windows, macOS, Linux).</p></li>
+<li><p>Скачай и следуй инструкциям на экране для завершения установки.</p></li>
+</ol>
+<section id="windows-vs-code">
+<h3>Настройки терминала Windows для работы с VS Code<a class="headerlink" href="#windows-vs-code" title="Ссылка на этот заголовок"></a></h3>
+<p>Для того чтобы наша работа с VS Code, особенно с терминалом и виртуальными окружениями, была максимально удобной и безошибочной, необходимо выполнить несколько настроек в PowerShell. Эти настройки позволят запускать скрипты и управлять виртуальными окружениями без дополнительных проблем.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Когда вы пытаетесь запустить виртуальное окружение или выполнить скрипты в PowerShell, система может заблокировать выполнение этих операций из-за политики безопасности. Это связано с тем, что по умолчанию Windows запрещает запускать неподписанные скрипты, чтобы предотвратить возможные угрозы безопасности.</p>
+<p>В командной строке PowerShell существует несколько типов политик выполнения (Execution Policies), и в нашем случае используется политика <strong>RemoteSigned</strong>, которая разрешает запуск локальных скриптов, но требует, чтобы скрипты, загруженные из интернета, были подписаны доверенным издателем.</p>
+</div>
+<section id="id1">
+<h4>Шаги настройки<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h4>
+<ol class="arabic">
+<li><p><strong>Открыть Windows PowerShell от имени администратора</strong>
+Для выполнения изменений в системных настройках необходимо иметь права администратора. Для этого:</p>
+<ul class="simple">
+<li><p>Найдите «PowerShell» в поиске Windows.</p></li>
+<li><p>Щелкните правой кнопкой мыши на «Windows PowerShell» и выберите <strong>Запуск от имени администратора</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Ввести команду</strong>
+После того как PowerShell откроется с правами администратора, введите команду:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Set-ExecutionPolicy<span class="w"> </span>RemoteSigned<span class="w"> </span>-Force
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Подробнее о команде</p>
+<ul class="simple">
+<li><p><strong>Set-ExecutionPolicy</strong> — это команда, которая позволяет изменить текущую политику выполнения скриптов.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>RemoteSigned</strong> — настройка, которая разрешает запуск локальных скриптов и скриптов, подписанных с удалённых источников.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>-Force</strong> — флаг, который автоматически подтверждает выполнение команды, не запрашивая разрешение у пользователя.</p></li>
+</ul>
+</div>
+<p>После выполнения этой команды PowerShell будет разрешать запускать локальные скрипты и работать с виртуальными окружениями, что значительно улучшит ваш опыт работы с VS Code. Вы сможете без проблем активировать и деактивировать виртуальные окружения, а также запускать различные командлеты и автоматизировать процессы разработки.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="notepad">
+<h2>Notepad++<a class="headerlink" href="#notepad" title="Ссылка на этот заголовок"></a></h2>
+<p>Notepad++ — это бесплатный и мощный текстовый редактор для Windows, который поддерживает работу с множеством языков программирования. Он обладает удобным интерфейсом, функциями подсветки синтаксиса, авто-дополнением, расширяемостью через плагины и возможностью работы с большими файлами, что делает написание и редактирование коммитов более удобным.</p>
+<section id="id2">
+<h3>Установка<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h3>
+<ol class="arabic simple">
+<li><p>Перейди на <a class="reference external" href="https://notepad-plus-plus.org/">официальный сайт Notepad++</a>.</p></li>
+<li><p>Скачай последнюю версию для Windows (обычно это будет версия для 32 или 64-битной системы).</p></li>
+<li><p>Запусти установочный файл и следуй инструкциям установщика.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="git-github">
+<h2>🔄 Git и Github<a class="headerlink" href="#git-github" title="Ссылка на этот заголовок"></a></h2>
+<p>Git — это распределённая система управления версиями, которая позволяет отслеживать изменения в коде и работать над проектами с несколькими людьми одновременно.</p>
+<p>GitHub — это онлайн-платформа для хостинга и совместной работы с репозиториями Git, позволяющая легко обмениваться кодом и контролировать версии.</p>
+<p>Git позволяет управлять версионностью кода, а GitHub обеспечивает совместную работу над проектами, делая код доступным для всех участников.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p><a class="reference external" href="https://habr.com/ru/articles/541258/">Подробная инструкция по установке и настройке Git</a></p>
+<p><a class="reference external" href="https://www.youtube.com/playlist?list=PLDyvV36pndZFHXjXuwA_NywNrVQO0aQqb">Лучший видеокурс по работе с Git для новичков</a></p>
+<p><a class="reference external" href="https://stepik.org/course/125248">Бесплатный курс по работе с Git и GitHub на Stepik</a></p>
+</div>
+<section id="git-windows">
+<h3>Минимальная установка Git на Windows<a class="headerlink" href="#git-windows" title="Ссылка на этот заголовок"></a></h3>
+<ol class="arabic simple">
+<li><p>Скачайте Git с <a class="reference external" href="https://git-scm.com/">официального сайта</a></p></li>
+</ol>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Совет</p>
+<p>Можно оставить настройки по умолчанию</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Добавьте путь к Git в переменную среды Path (Python настраивался аналогично)
+Когда Git будет установлен, нужно добавить его путь в переменную среды Path, чтобы команды Git были доступны в любом месте командной строки. Это позволяет вам запускать Git, не указывая полный путь до его исполнимых файлов.</p></li>
+</ol>
+<div class="dropdown admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В процессе установки Git, обычно, эта настройка уже выполняется автоматически. Однако, если по какой-то причине этого не произошло, вы можете сделать это вручную:</p>
+<ul class="simple">
+<li><p>Откройте меню «Пуск», найдите Система и откройте Свойства системы.</p></li>
+<li><p>Перейдите во вкладку Дополнительные параметры системы.</p></li>
+<li><p>Нажмите Переменные среды….</p></li>
+<li><p>В разделе Системные переменные найдите переменную Path и выберите Изменить.</p></li>
+<li><p>Добавьте новый путь к папке с установленным Git, обычно это C:\Program Files\Git\bin (или аналогичный путь в зависимости от места установки).</p></li>
+<li><p>Нажмите Ок, чтобы сохранить изменения.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Откройте командную строку Windows и обновите глобальные настройки Git - установите имя, электронную почту, выберите Notepad++ в качестве редактора по умолчанию</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>global<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Ваше имя&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>global<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;Ваша почта&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">&quot;notepad++ -multiInst -nosession&quot;</span>
+</pre></div>
+</div>
+<div class="dropdown admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Можно выдумать любые имя и почту, но лучше сразу указать как минимум реальную почту. Это поможет вам и другим разработчикам легко видеть, кто внес изменения в код.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Совет</p>
+<p>Используй <a class="reference internal" href="recommendations.html#id1"><span class="std std-ref">памятку по коммитам</span></a> для грамотной работы с Git.</p>
+</div>
+<hr class="docutils" />
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Автоматизировать через copier</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Используй шаблон для коммитов</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>commit.template<span class="w"> </span>.<span class="se">\p</span>rojectTemplate<span class="se">\d</span>ocs<span class="se">\c</span>ommit_template.txt
+</pre></div>
+</div>
+<p>Теперь при команде git commit</p>
+<ul class="simple">
+<li><p>Git откроет Notepad++ с шаблоном из commit_template.txt.</p></li>
+<li><p>Ты заполняешь описание коммита в этом шаблоне.</p></li>
+<li><p>После сохранения и закрытия Notepad++ изменения коммита будут сохранены.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Шаблон коммита помогает всегда следовать одинаковому стилю. Ты можешь легко настроить шаблон коммита под собственные нужды и стандарты. Для этого необходимо отредактировать файл \projectTemplate\docs\commit_template.txt</p>
+</div>
+</section>
+</section>
+<section id="copier">
+<h2>📐 Copier<a class="headerlink" href="#copier" title="Ссылка на этот заголовок"></a></h2>
+<p><a class="reference external" href="https://copier.readthedocs.io/"><code class="docutils literal notranslate"><span class="pre">copier</span></code></a> — это инструмент для автоматического копирования шаблонов и генерации файлов, который используется для создания новых проектов на основе заранее подготовленных шаблонов. Он позволяет быстро клонировать структуру проекта, что особенно полезно для стандартизации и автоматизации процесса создания новых приложений или компонентов. Также <code class="docutils literal notranslate"><span class="pre">copier</span></code> позволяет быстро обновлять проекты при изменении шаблона, на основе которого они были выполнены.</p>
+<p>Установить его можно через <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>copier
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Убедись, что у тебя установлен Python 3.9 или выше. Проверить версию можно командой:</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
+</pre></div>
+</div>
+<section id="id3">
+<h3>Копирование шаблона проекта<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p>Теперь, когда <code class="docutils literal notranslate"><span class="pre">copier</span></code> установлен, мы можем скопировать шаблон в нужную директорию. Для этого выполните следующую команду:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>copier<span class="w"> </span>copy<span class="w"> </span>https://github.com/yourname/projectTemplate.git<span class="w"> </span>./your_project_name
+</pre></div>
+</div>
+<p>Замените <code class="docutils literal notranslate"><span class="pre">your_project_name</span></code> на имя новой папки, в которую будет скопирован проект.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Copier предложит ответить на несколько вопросов — ты можешь принять значения по умолчанию или изменить их под свои нужды.</p>
+</div>
+</section>
+<section id="id4">
+<h3>Обновление шаблона проекта с помощью copier<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Если шаблон проекта был обновлён и ты хочешь применить изменения к своему текущему проекту, можно использовать команду copier update. Это позволяет синхронизировать проект с изменениями в шаблоне.</p>
+<p>Для этого перейди в директорию с проектом и выполни команду:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>copier<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>При выполнении этой команды Copier будет проверять изменения в шаблоне и предложит обновить файлы, если они были изменены. Ты можешь выбрать, какие изменения принять, а какие отклонить.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Перед обновлением рекомендуется создать резервную копию проекта, чтобы избежать потери данных.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>⚙️ Виртуальное окружение<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<section id="id6">
+<h3>Создание виртуального окружения<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>После копирования шаблона перейди в папку проекта и создай виртуальное окружение:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>your_project_name
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</pre></div>
+</div>
+<p>Затем активируй виртуальное окружение:</p>
+<p>Для Windows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="se">\v</span>env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</pre></div>
+</div>
+<p>Для macOS/Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Не забудь активировать виртуальное окружение перед установкой зависимостей!</p>
+<p>Подробнее о том, <a class="reference external" href="https://skillbox.ru/media/code/python-venv-chto-takoe-virtualnoe-okruzhenie-i-kak-im-polzovatsya/">что такое виртуальное окружение и зачем его настраивать</a></p>
+</div>
+</section>
+<section id="id7">
+<h3>Установка зависимостей<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></strong> — это файл, который хранит список всех зависимостей проекта, которые нужно установить для его работы. Он используется для упрощения процесса установки пакетов, необходимых для проекта.</p>
+<p>Когда ты добавляешь новые библиотеки в проект или обновляешь их версии, важно обновить этот файл, чтобы другие разработчики или среды, в которых будет запускаться проект, могли легко установить нужные пакеты.</p>
+<section id="requirements-txt">
+<h4>Как обновить <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>?<a class="headerlink" href="#requirements-txt" title="Ссылка на этот заголовок"></a></h4>
+<ol class="arabic simple">
+<li><p>Если ты установил новую библиотеку с помощью pip, например:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>some_library
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Чтобы обновить файл <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, используй команду:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Эта команда автоматически сохранит все текущие установленные пакеты и их версии в файл <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Это особенно важно, чтобы сохранить совместимость всех зависимостей проекта.</p>
+<p>Такой подход позволяет обеспечить</p>
+<ul class="simple">
+<li><p><strong>Совместимость:</strong> Когда кто-то клонирует твой проект и установит все зависимости с помощью <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>, он получит те же версии библиотек, что и ты. Это гарантирует, что проект будет работать одинаково в разных средах.</p></li>
+<li><p><strong>Удобство:</strong> Для разработчиков, которые работают с твоим проектом, наличие актуального <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> позволяет легко установить все нужные библиотеки одной командой. Это сокращает время на настройку окружения.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h4>Пример:<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h4>
+<p>Допустим, ты добавил библиотеку <code class="docutils literal notranslate"><span class="pre">requests</span></code> в проект. После этого команда <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> обновит <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> и будет выглядеть, например, так:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>requests==2.28.1
+numpy==1.23.0
+flask==2.1.0
+</pre></div>
+</div>
+<p>Теперь, когда кто-то загрузит проект и выполнит команду</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Все эти библиотеки будут установлены в нужных версиях.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Подробнее об управлении зависимостями можно почитать <a class="reference external" href="https://habr.com/ru/articles/889670/">на хабре</a></p>
+</div>
+</section>
+</section>
+</section>
+<section id="pre-commit">
+<h2>🕵️‍♂️ Подключение pre-commit<a class="headerlink" href="#pre-commit" title="Ссылка на этот заголовок"></a></h2>
+<section id="id9">
+<h3>Что такое pre-commit?<a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<p><a class="reference external" href="https://github.com/pre-commit/pre-commit">pre-commit</a> — это инструмент для автоматической проверки кода перед коммитами в Git. Он позволяет настроить ряд <a class="reference external" href="https://git-scm.com/book/ru/v2/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-Git-%D0%A5%D1%83%D0%BA%D0%B8-%D0%B2-Git">хуков</a>, которые будут запускаться каждый раз перед тем, как код попадет в репозиторий.</p>
+<p>pre-commit помогает поддерживать чистоту кодовой базы. При помощи этого инструмента можно проводить различные проверки кода:</p>
+<ul class="simple">
+<li><p>Линтинг: анализ кода на ошибки, несоответствия стилю и потенциальные проблемы. Линтеры помогают выявлять синтаксические ошибки и улучшать читаемость кода.</p></li>
+<li><p>Форматирование: автоматическое приведение кода к единому стилю (отступы, пробелы, порядок импортов)</p></li>
+<li><p>Проверки безопасности: предотвращение утечек чувствительных данных (паролей, ключей) выявление потенциальных уязвимостей.</p></li>
+</ul>
+<p>Для активации выполни команду в виртуальном окружении</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Эта команда устанавливает нужные скрипты в директорию .git/hooks</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Настройки для pre-commit находятся в корне проекта в <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code></p>
+</div>
+</section>
+<section id="id10">
+<h3>Запуск pre-commit<a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<p>После того как вы выполните команду <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code>, хуки будут автоматически запускаться каждый раз при выполнении команды <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Автоматический запуск хуков помогает поддерживать код в хорошем состоянии, предотвращая попадание невалидного кода в репозиторий.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Для одного файла</p></li>
+</ol>
+<p>Чтобы запустить хуки только для одного конкретного файла, используйте команду:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--files<span class="w"> </span>path/to/file
+</pre></div>
+</div>
+<p>Замените <code class="docutils literal notranslate"><span class="pre">path/to/file</span></code> на путь к нужному файлу. Это полезно, когда вы хотите проверить только изменения в одном файле, не выполняя проверку для всего проекта.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В VS Code можно скопировать путь файла - кликаем правой кнопкой мышки на файл, выбираем
+Copy Path/Copy Relative Path</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Запуск для всех файлов</p></li>
+</ol>
+<p>Чтобы запустить все хуки для всех файлов, выполните следующую команду:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</pre></div>
+</div>
+<p>Эта команда проверит все файлы в проекте, которые находятся под контролем Git, используя все настроенные хуки.</p>
+<ol class="arabic simple" start="3">
+<li><p>Отключение pre-commit для конкретного коммита</p></li>
+</ol>
+<p>Если по какой-то причине вам нужно выполнить коммит, не запуская хуки, вы можете использовать флаг <code class="docutils literal notranslate"><span class="pre">--no-verify</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>--no-verify
+</pre></div>
+</div>
+<p>Это временно отключит запуск хуков перед коммитом, но следует использовать эту опцию с осторожностью, чтобы не пропустить важные проверки.</p>
+</section>
+<section id="id11">
+<h3>Хуки<a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<p>В данном шаблоне используются следующие хуки</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Настройки для pre-commit находятся в корне проекта в <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>. Их можно менять при необходимости</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Группа хуков</strong></p></th>
+<th class="head"><p><strong>Хук</strong></p></th>
+<th class="head"><p><strong>Описание</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Линтинг и форматирование</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/astral-sh/ruff-pre-commit">ruff-format</a></p></td>
+<td><p>Форматирует код с использованием <code class="docutils literal notranslate"><span class="pre">ruff</span></code>, чтобы привести его к стандарту PEP8.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/astral-sh/ruff-pre-commit">ruff-check</a></p></td>
+<td><p>Проверяет код с использованием <code class="docutils literal notranslate"><span class="pre">ruff</span></code>. Параметр <code class="docutils literal notranslate"><span class="pre">--fix</span></code> автоматически исправляет ошибки, а <code class="docutils literal notranslate"><span class="pre">--exit-non-zero-on-fix</span></code> возвращает ошибку, если что-то исправлено.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/PyCQA/isort">isort</a></p></td>
+<td><p>Сортирует импорты в коде, упорядочивая их по стандартам (например, алфавитный порядок).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Базовые проверки</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-added-large-files</a></p></td>
+<td><p>Проверяет, не были ли случайно добавлены слишком большие файлы в репозиторий.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-case-conflict</a></p></td>
+<td><p>Проверяет наличие конфликтов имен с различием в регистре (например, <code class="docutils literal notranslate"><span class="pre">file.py</span></code> и <code class="docutils literal notranslate"><span class="pre">File.py</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-illegal-windows-names</a></p></td>
+<td><p>Проверяет, что имена файлов не содержат запрещенные символы для Windows.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-docstring-first</a></p></td>
+<td><p>Проверяет, что строки документации расположены сразу после определения функции или класса.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-symlinks</a></p></td>
+<td><p>Проверяет наличие символических ссылок в проекте.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-json</a></p></td>
+<td><p>Проверяет синтаксис JSON-файлов на корректность.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-toml</a></p></td>
+<td><p>Проверяет синтаксис TOML-файлов на корректность.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><a class="reference external" href="https://github.com/pre-commit/mirrors-pre-commit-hooks">check-yaml</a></p></td>
+<td><p>Проверяет синтаксис YAML-файлов на корректность.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Поиск секретов</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/Yelp/detect-secrets">detect-secrets</a></p></td>
+<td><p>Ищет секреты в коде (например, пароли или ключи API), чтобы предотвратить случайное добавление чувствительных данных в репозиторий.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Обновление синтаксиса Python</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/asottile/pyupgrade">pyupgrade</a></p></td>
+<td><p>Обновляет синтаксис Python до более новой версии, например, обновляет старые конструкции (например, <code class="docutils literal notranslate"><span class="pre">u''</span></code> на <code class="docutils literal notranslate"><span class="pre">''</span></code> для строк).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Проверка покрытия docstrings</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/econchick/interrogate">interrogate</a></p></td>
+<td><p>Проверяет, что все функции и классы имеют соответствующие строки документации, и требует минимальный процент покрытия docstrings (например, 80%).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Статический анализ безопасности</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/PyCQA/bandit">bandit</a></p></td>
+<td><p>Выполняет статический анализ безопасности кода и выявляет уязвимости, такие как небезопасные функции или конструкции в коде.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>📚 Работа с документацией<a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h2>
+<p>Шаблон уже настроен для генерации документации с помощью <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a>. Чтобы сгенерировать HTML-документацию, в папке проекта выполни команду:</p>
+<section id="linux">
+<h3>Для Linux<a class="headerlink" href="#linux" title="Ссылка на этот заголовок"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html
+</pre></div>
+</div>
+</section>
+<section id="windows">
+<h3>Для Windows<a class="headerlink" href="#windows" title="Ссылка на этот заголовок"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="se">\d</span>ocs<span class="se">\m</span>ake.bat<span class="w"> </span>html
+</pre></div>
+</div>
+<p>HTML-версия документации будет доступна в папке <code class="docutils literal notranslate"><span class="pre">_build/html</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Чтобы открыть документацию локально, открой файл <code class="docutils literal notranslate"><span class="pre">_build/html/index.html</span></code> в браузере.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ci-cd">
+<h2>CI/CD<a class="headerlink" href="#ci-cd" title="Ссылка на этот заголовок"></a></h2>
+<p>Для автоматического деплоя приложения на свой личный сервер следует выполнить следующие шаги:</p>
+<section id="vps">
+<h3>Настройка на стороне VPS<a class="headerlink" href="#vps" title="Ссылка на этот заголовок"></a></h3>
+<ol class="arabic simple">
+<li><p>Создать нового юзера на VPS и ограничить его в правах
+На вашем VPS создайте пользователя, который будет использоваться только для деплоя, и предоставьте ему минимальные права.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>useradd<span class="w"> </span>deployer
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Редактируем sudoers при помощи команды <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">visudo</span></code>. Добавляем внизу такую строчку</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>deployer  ALL=(ALL) NOPASSWD: /usr/bin/git, /usr/bin/docker
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Редактируем sshd_config через sudo</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/ssh/sshd_config
+</pre></div>
+</div>
+<p>Должно быть так</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PermitRootogin no
+PubkeyAuthentication yes
+PasswordAuthentication no
+PermitEmptyPasswords no
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Добавляем юзера deployer в группу docker</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span>deployer
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Настройка SSH для юзера deployer</p></li>
+</ol>
+<ul class="simple">
+<li><p>Создаем в домашней директории home/deployer папку .ssh</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/home/deployer/.ssh
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Добавляем админа в группу deployer</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>deployer<span class="w"> </span>admin
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Создаем файл /home/deployer/.ssh/autorized_keys</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>home/deployer/.ssh/autorized_keys
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Генерируем на локальном компьютере SSH ключи по алгоритму Ed25519
+В результате получаем 2 ключа с именами deployer</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-a<span class="w"> </span><span class="m">200</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;github actions&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Копируем ПУБЛИЧНЫЙ ключ SSH в /home/deployer/.ssh/autorized_keys</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Настройки прав доступа (необходимо для подключения по ssh)
+Настраиваем следующие права для юзера deployer, его директорий и файлов</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span>go-w<span class="w"> </span>/home/deployer
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/deployer/.ssh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/deployer/.ssh/authorized_keys
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Делаем владельцем папки юзера deployer</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>deployer:deployer<span class="w"> </span>/home/deployer/.ssh
+</pre></div>
+</div>
+</section>
+<section id="github">
+<h3>Настройка на стороне GitHub<a class="headerlink" href="#github" title="Ссылка на этот заголовок"></a></h3>
+<ol class="arabic simple">
+<li><p>Создаем необходимые переменные для Github Secrets</p></li>
+</ol>
+<ul class="simple">
+<li><p>SSH_PRIVATE_KEY - приватный SSH ключ</p></li>
+<li><p>SSH_HOST - IP адрес сервера (можно узнать через команду <code class="docutils literal notranslate"><span class="pre">ifconfig</span></code>)</p></li>
+<li><p>SSH_PORT - порт SSH (можно найти в /etc/ssh/sshd_config)</p></li>
+<li><p>SSH_USER - имя юзера (в нашем случае deployer)</p></li>
+<li><p>DEPLOY_PATH - директория на сервере, где будет развернуто приложение (/home/deployer/)</p></li>
+<li><p>TELEGRAM_BOT_KEY - API ключ телеграм бота, которому будут приходить уведомления об успешном деплое</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Делаем push на гитхаб, получаем уведомление в телеграм</p></li>
+</ol>
+</section>
+</section>
+<section id="id13">
+<h2>✅ Резюме<a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h2>
+<p>Теперь твой проект полностью настроен и готов к разработке. Ты можешь:</p>
+<ul class="simple">
+<li><p>Писать код в VS Code с поддержкой Python и автодополнением</p></li>
+<li><p>Использовать виртуальное окружение для изоляции зависимостей</p></li>
+<li><p>Работать с Git и делать коммиты</p></li>
+<li><p>Генерировать и читать документацию</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="📜 Overview: Обзор шаблона" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="basics.html" class="btn btn-neutral float-right" title="🗺️ Roadmap: как работать с шаблоном" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, gleb. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
