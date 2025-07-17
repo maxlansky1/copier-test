@@ -69,7 +69,7 @@ jobs:
             git reset --hard
 
             # Подтягиваем изменения из main
-            copier update
+            git pull
 
             # Выполняем нужное действие в зависимости от изменений
             if [ "${{ env.run_rebuild }}" = "true" ]; then
