@@ -1,0 +1,74 @@
+name: Build and Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - '**'  # Поддержка всех веток
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+
+    steps:
+      - name: 📁 Клонируем репозиторий
+        uses: actions/checkout@v3
+
+      - name: ☕ Устанавливаем Java и Graphviz (нужна для PlantUML)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y default-jre graphviz
+
+      - name: 🌿 Скачиваем последнюю версию PlantUML, проверяем работу Graphviz и Dot
+        run: |
+          # Создаем папку для PlantUML в /usr/local/bin, скачиваем PlantUML
+          sudo mkdir -p /usr/local/bin/plantuml
+          sudo wget -q https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar -O /usr/local/bin/plantuml/plantuml.jar
+          # Проверяем версию PlantUML, Graphviz, Dot
+          java -jar /usr/local/bin/plantuml/plantuml.jar -version
+          dot -V
+          java -jar /usr/local/bin/plantuml/plantuml.jar -testdot
+
+      - name: 🐍 Настраиваем Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: 🔧 Устанавливаем зависимости
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install sphinxcontrib-plantuml sphinx-rtd-theme
+
+      - name: 📄 Проверяем конфигурацию Sphinx
+        run: |
+          echo "Текущая конфигурация conf.py:"
+          cat docs/conf.py
+
+      - name: 📊 Собираем документацию
+        env:
+          PLANTUML_JAR_PATH: /usr/local/bin/plantuml/plantuml.jar
+        run: |
+          cd docs
+          
+          # Очищаем старый билд
+          make clean
+
+          # Передаём путь к plantuml через переменную окружения, а не правим conf.py
+          make html SPHINXOPTS="-D plantuml=java\ -jar\ $PLANTUML_JAR_PATH"
+
+          # Добавляем .nojekyll чтобы GitHub Pages не обрабатывал файлы как Jekyll-сайт
+          touch _build/html/.nojekyll
+
+      - name: 🖼️ Проверяем, собран ли HTML
+        run: |
+          ls -la docs/_build/html/
+
+      - name: 🚀 Деплоим документацию на GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/_build/html
