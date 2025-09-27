@@ -9,8 +9,8 @@
 
 import asyncio
 from faker import Faker
-from sqlalchemy import select, delete
-from src.databases.sqlite.core import async_session, engine, Base  # ✅ Импортируем Base отсюда
+from sqlalchemy import select
+from src.databases.sqlite.core import async_session, engine, Base
 from src.databases.sqlite.models.user import User
 from src.utils.logger import get_logger
 
@@ -27,17 +27,36 @@ async def create_user(count: int = 1):
         count (int): количество пользователей для создания
     """
     async with async_session() as session:
-        for _ in range(count):
-            new_user = User(
-                username=faker.user_name(),
-                email=faker.email(),
+        created = 0
+        attempts = 0
+        max_attempts = count * 5  # чтобы не застрять в бесконечности
+
+        while created < count and attempts < max_attempts:
+            username = faker.user_name()
+            email = faker.email()
+
+            # Проверяем, существует ли уже пользователь с таким username или email
+            result = await session.execute(
+                select(User).where((User.username == username) | (User.email == email))
             )
+            existing = result.scalars().first()
+
+            if existing:
+                attempts += 1
+                continue  # Пропускаем, если уже существует
+
+            new_user = User(username=username, email=email)
             session.add(new_user)
             await session.commit()
             await session.refresh(new_user)
             logger.info(f"Создан пользователь: {new_user}")
+            created += 1
+            attempts += 1
 
-        logger.info(f"Создано {count} пользователей.")
+        if created < count:
+            logger.warning(f"Не удалось создать {count - created} пользователей из-за ограничений уникальности.")
+
+        logger.info(f"Создано {created} пользователей.")
 
 
 async def read_users():
@@ -75,8 +94,27 @@ async def update_user():
             return
 
         if new_username:
+            # Проверяем уникальность
+            result = await session.execute(
+                select(User).where(User.username == new_username).where(User.id != user_id)
+            )
+            existing = result.scalars().first()
+            if existing:
+                logger.error(f"Пользователь с username '{new_username}' уже существует.")
+                return
+
             user.username = new_username
+
         if new_email:
+            # Проверяем уникальность
+            result = await session.execute(
+                select(User).where(User.email == new_email).where(User.id != user_id)
+            )
+            existing = result.scalars().first()
+            if existing:
+                logger.error(f"Пользователь с email '{new_email}' уже существует.")
+                return
+
             user.email = new_email
 
         await session.commit()
