@@ -12,6 +12,7 @@ from faker import Faker
 from sqlalchemy import select, delete
 from src.databases.sqlite.core import async_session, engine
 from src.databases.sqlite.models.user import User
+from src.databases.sqlite.models import Base  # ✅ Импортируем Base
 from src.utils.logger import get_logger
 
 # Получаем логгер
@@ -113,6 +114,10 @@ def show_menu():
 
 
 async def main():
+    # Создаём таблицы при запуске
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
     while True:
         show_menu()
         choice = input("Введите номер действия: ").strip()
