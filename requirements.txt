@@ -32,3 +32,6 @@ pydantic-settings
 sqlalchemy
 aiosqlite
 alembic
+
+# Разное
+faker
