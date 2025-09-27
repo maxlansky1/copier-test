@@ -10,9 +10,8 @@
 import asyncio
 from faker import Faker
 from sqlalchemy import select, delete
-from src.databases.sqlite.core import async_session, engine
+from src.databases.sqlite.core import async_session, engine, Base  # ✅ Импортируем Base отсюда
 from src.databases.sqlite.models.user import User
-from src.databases.sqlite.models import Base  # ✅ Импортируем Base
 from src.utils.logger import get_logger
 
 # Получаем логгер
