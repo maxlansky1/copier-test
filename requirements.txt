@@ -1,7 +1,9 @@
 # для вывода цветных логов
 colorama
 
+# TODO: рефактор - переходим с environs на pydantic + python-dotenv
 # работа с .env
+python-dotenv
 environs
 
 # Поддержка markdown
@@ -21,3 +23,7 @@ sphinx-togglebutton
 
 # Библиотека для управления проектами
 copier
+
+# Библиотека для валидации
+pydantic[all]
+pydantic-settings

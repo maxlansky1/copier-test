@@ -38,13 +38,14 @@ repos:
     rev: 6.0.1
     hooks:
     -   id: isort
+        args: ["--profile", "black", "--filter-files"]
 
 # 5. Проверка покрытия docstrings
 -   repo: https://github.com/econchick/interrogate
     rev: 1.7.0 
     hooks:
       - id: interrogate
-        args: [--fail-under=50, -vv, -i, -I, -m]
+        args: [--fail-under=80, -vv, -i, -I, -m]
 
 # 6. Статический анализ безопасности
 -   repo: https://github.com/PyCQA/bandit   

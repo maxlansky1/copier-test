@@ -15,7 +15,7 @@ from datetime import datetime
 
 from colorama import Back, Fore, Style, init
 
-from configs.config import Config
+import os
 
 # Инициализация colorama для Windows/Linux/macOS
 init(autoreset=True)
@@ -82,7 +82,7 @@ def get_logger(name=None):
 
     # Настройка корневого логгера при помощи configs/config.py
     logger = logging.getLogger(name)
-    logger.setLevel(Config.LOG_LEVEL)
+    logger.setLevel(os.getenv("LOG_LEVEL", "INFO"))
 
     # Предотвращаем дублирование логов (если уже есть хэндлеры)
     if logger.hasHandlers():
