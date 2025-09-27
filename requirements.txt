@@ -27,3 +27,8 @@ copier
 # Библиотека для валидации
 pydantic[all]
 pydantic-settings
+
+# Работа с БД
+sqlalchemy
+aiosqlite
+alembic

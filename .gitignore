@@ -133,7 +133,8 @@ celerybeat-schedule
 *.log
 logs/
 
-# Базы данных SQLite
+# Данные и БД
+data/
 *.sqlite3
 
 
