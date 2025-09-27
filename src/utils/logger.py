@@ -10,6 +10,7 @@ Attributes:
 
 import logging
 import os
+import sys
 from datetime import datetime
 
 from colorama import Back, Fore, Style, init
@@ -88,7 +89,8 @@ def get_logger(name=None):
         return logger
 
     # --- Консольный вывод ---
-    console_handler = logging.StreamHandler()
+    console_handler = logging.StreamHandler(sys.stdout)
+
     console_handler.setLevel(logging.DEBUG)
     console_formatter = ColoredFormatter(fmt=LOG_FORMAT, datefmt=DATE_FORMAT)
     console_handler.setFormatter(console_formatter)

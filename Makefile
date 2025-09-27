@@ -1,9 +1,13 @@
 # ================================
-# 🛠️ Makefile для Telegram-бота
+# 🛠️ Makefile
 # ================================
+
+# Считываем переменные окружения и экспортируем их
+include .env
 
 # Указывает, какой файл docker-compose используется
 COMPOSE_FILE=docker-compose.yaml
+DC = docker-compose
 
 # Сервис по умолчанию (например, app)
 SERVICE ?= app
@@ -15,15 +19,19 @@ SERVICE ?= app
 # 📌 ОСНОВНЫЕ КОМАНДЫ
 # =============================================
 
+# Посмотреть все существующие контейнеры
+ps:
+	docker ps -a
+# 
 # ▶️ Запуск контейнеров в фоне
 # Используй после сборки или при старте проекта
 up:
-	docker-compose -f $(COMPOSE_FILE) up -d
+	$(DC) up -d
 
 # ⛔ Остановить все контейнеры проекта
 # Не удаляет образы и данные
 down:
-	docker-compose -f $(COMPOSE_FILE) down
+	$(DC) down
 
 # 🔁 Перезапустить контейнеры без пересборки
 # Полезно, если изменился код, но не зависимости
@@ -34,33 +42,32 @@ restart:
 # 🔨 Пересобрать образы с нуля + очистка мусора
 # Только для изменений в requirements.txt или Dockerfile
 build:
-	docker-compose -f $(COMPOSE_FILE) build --no-cache
-	$(MAKE) prune
+	$(DC) build --no-cache
 
-# 🔁🔄 Полный цикл: остановка → пересборка → запуск
+# 🔁🔄 Полный цикл: остановка → удаление → запуск
 # Используй, если хочешь всё обновить "от и до"
-rebuild: down build up
+rebuild: prune build up
 
 # 🔍 Просмотр логов в реальном времени
 logs:
-	docker-compose -f $(COMPOSE_FILE) logs -f
+	docker logs -f $(DOCKER_CONTAINER_NAME)
 
 # 🖥️ Вход внутрь контейнера через bash (или sh)
 bash:
-	docker-compose -f $(COMPOSE_FILE) exec $(SERVICE) /bin/bash || \
-	docker-compose -f $(COMPOSE_FILE) exec $(SERVICE) /bin/sh
+	$(DC) exec $(SERVICE) /bin/bash || \
+	$(DC) exec $(SERVICE) /bin/sh
 
 # 🗑️ Очистка: удаление остановленных контейнеров и старых образов этого проекта
 prune:
-	docker-compose -f $(COMPOSE_FILE) down --rmi local --volumes
+	$(DC) down --rmi local --volumes --remove-orphans
 
 # Очистка сгенерированной документации
 docs-clean:
-	.\docs\make.bat clean
+	cd docs && make clean
 
 # Сборка HTML-документации
 docs-html:
-	.\docs\make.bat html
+	cd docs && make html
 
 # =============================================
 # 💡 ПАМЯТКА: Какие команды когда использовать

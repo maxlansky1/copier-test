@@ -1,4 +1,4 @@
-name: Тестирование SSH подключения
+name: Автодеплой
 
 on:
   push:
@@ -13,6 +13,8 @@ jobs:
 
       - name: Проверка репозитория
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Проверяем, подтягиваются ли переменные
         run: |
@@ -33,28 +35,35 @@ jobs:
           if [[ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]]; then echo "❌ SSH_PRIVATE_KEY is empty"; fi
           if [[ -z "${{ secrets.DEPLOY_PATH }}" ]]; then echo "❌ DEPLOY_PATH is empty"; fi
 
-      - name: Определяем тип изменений
+      - name: Определяем тип изменений и выбираем пересборку/рестарт
         id: changes
         run: |
-          if git rev-parse HEAD^ &>/dev/null; then
-            changed_files=$(git diff --name-only HEAD^)
+          # Проверка, не первый ли это коммит
+          if [[ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]]; then
+            # Получаем измененные файлы между коммитами
+            changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
+            echo "$changed_files"
           else
             echo "Первый коммит — требуется полная пересборка"
             echo "run_rebuild=true" >> $GITHUB_ENV
             exit 0
           fi
 
-          # Если изменились файлы docker или requirements - пересборка, в другом случае рестарт
-          if echo "$changed_files" | grep -E 'Dockerfile|docker-compose|requirements.txt' > /dev/null; then
+          # Проверка на изменения в Dockerfile, docker-compose или requirements.txt
+          if echo "$changed_files" | grep -qE '(Dockerfile|docker-compose.*\.yml|requirements\.txt)'; then
             echo "run_rebuild=true" >> $GITHUB_ENV
+            echo "action_type=Пересборка" >> $GITHUB_ENV
           else
             echo "run_rebuild=false" >> $GITHUB_ENV
+            echo "action_type=Рестарт" >> $GITHUB_ENV
           fi
+
       - name: Определяем название репозитория
         run: |
           echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
 
       - name: Подключаемся по SSH
+        id: ssh-connect
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -70,7 +79,7 @@ jobs:
 
             # Настройка git для автоматического слияния
             git config pull.rebase false
-            
+
             # Подтягиваем изменения из main
             git pull
 
@@ -83,34 +92,35 @@ jobs:
               make restart
             fi
 
-            docker ps
+            # Получаем список контейнеров
+            docker ps -a
 
       - name: Отправляем сообщение в телеграм бота
         if: success()
-        run: |
-          # Получаем список запущенных контейнеров
-          CONTAINERS=$(docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Ports}}")
-
-          # Отправляем сообщение через бота
-          curl -s -X POST \
-            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            -d chat_id="${TELEGRAM_CHAT_ID}" \
-            -d parse_mode="Markdown" \
-            -d text="✅ *Сборка прошла успешно*
-
-            📦 *Repo:* \`${REPO_NAME}\`
-            📌 *Commit:* [${COMMIT_SHA:0:7}](https://github.com/${REPO_NAME}/commit/${COMMIT_SHA})
-            🕒 *Time:* $(date '+%Y-%m-%d %H:%M:%S')
-
-            📦 *Запущенные контейнеры:*
-            \`\`\`
-            $CONTAINERS
-            \`\`\`
-
-            🔗 [View in GitHub Actions](https://github.com/${REPO_NAME}/actions/runs/${GITHUB_RUN_ID})"
-            
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           REPO_NAME: ${{ github.repository }}
           COMMIT_SHA: ${{ github.sha }}
+          CONTAINERS: ${{ steps.ssh-connect.outputs.stdout }}
+          ACTION_TYPE: ${{ env.action_type }}
+
+        run: |
+          # Формируем сообщение
+          MESSAGE="✅ <b>${action_type}</b>
+
+          📦 <b>Repo:</b> <code>${REPO_NAME}</code>
+          📌 <b>Commit:</b> <a href='https://github.com/${REPO_NAME}/commit/${COMMIT_SHA}'>${COMMIT_SHA:0:7}</a>
+          🕒 <b>Time:</b> $(date '+%Y-%m-%d %H:%M:%S')
+
+          📋 <b>Запущенные контейнеры:</b>
+          <pre>${CONTAINERS}</pre>
+
+          🔗 <a href='https://github.com/${REPO_NAME}/actions/runs/${GITHUB_RUN_ID}'>View in GitHub Actions</a>"
+
+          # Отправляем сообщение через бота
+          curl -s -X POST \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TELEGRAM_CHAT_ID}" \
+            -d parse_mode="HTML" \
+            --data-urlencode text="$MESSAGE"

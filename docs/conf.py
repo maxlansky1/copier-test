@@ -15,8 +15,8 @@ sys.path.insert(0, os.path.abspath(".."))
 
 # Информация о проекте для документации
 project = "projectTemplate"
-copyright = "2025, gleb"
-author = "gleb"
+copyright = "2025, maxlansky"
+author = "maxlansky"
 release = "0.1"
 
 # Настройки для работы с PlantUML и рендеринга UML-диаграмм.
