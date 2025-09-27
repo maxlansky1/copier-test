@@ -9,7 +9,7 @@
 
 import asyncio
 from faker import Faker
-from sqlalchemy import select
+from sqlalchemy import select, delete
 from src.databases.sqlite.core import async_session, engine, Base
 from src.databases.sqlite.models.user import User
 from src.utils.logger import get_logger
@@ -29,34 +29,36 @@ async def create_user(count: int = 1):
     async with async_session() as session:
         created = 0
         attempts = 0
-        max_attempts = count * 5  # чтобы не застрять в бесконечности
+        max_attempts = count * 5
+
+        usernames = set()
+        emails = set()
+        users_to_add = []
 
         while created < count and attempts < max_attempts:
             username = faker.user_name()
             email = faker.email()
 
-            # Проверяем, существует ли уже пользователь с таким username или email
-            result = await session.execute(
-                select(User).where((User.username == username) | (User.email == email))
-            )
-            existing = result.scalars().first()
-
-            if existing:
+            if username in usernames or email in emails:
                 attempts += 1
-                continue  # Пропускаем, если уже существует
+                continue
 
-            new_user = User(username=username, email=email)
-            session.add(new_user)
-            await session.commit()
-            await session.refresh(new_user)
-            logger.info(f"Создан пользователь: {new_user}")
+            usernames.add(username)
+            emails.add(email)
+            users_to_add.append({"username": username, "email": email})
             created += 1
             attempts += 1
 
+        # Вставляем всё за раз
+        if users_to_add:
+            from sqlalchemy.dialects.sqlite import insert
+            stmt = insert(User).values(users_to_add)
+            await session.execute(stmt)
+            await session.commit()
+            logger.info(f"Создано {len(users_to_add)} пользователей.")
+
         if created < count:
             logger.warning(f"Не удалось создать {count - created} пользователей из-за ограничений уникальности.")
-
-        logger.info(f"Создано {created} пользователей.")
 
 
 async def read_users():
@@ -125,17 +127,46 @@ async def delete_user():
     """
     Удаляет пользователя по ID (ввод с клавиатуры).
     """
-    user_id = int(input("Введите ID пользователя для удаления: "))
+    choice = input("Удалить одного (1), несколько (2) или всех (3)? Введите 1/2/3: ").strip()
 
     async with async_session() as session:
-        user = await session.get(User, user_id)
-        if not user:
-            logger.warning(f"Пользователь с ID {user_id} не найден.")
-            return
+        if choice == "1":
+            user_id = int(input("Введите ID пользователя для удаления: "))
+            user = await session.get(User, user_id)
+            if not user:
+                logger.warning(f"Пользователь с ID {user_id} не найден.")
+                return
 
-        await session.delete(user)
-        await session.commit()
-        logger.info(f"Удалён пользователь: {user}")
+            await session.delete(user)
+            await session.commit()
+            logger.info(f"Удалён пользователь: {user}")
+
+        elif choice == "2":
+            ids_input = input("Введите ID пользователей через запятую (например: 1,2,3): ").strip()
+            try:
+                user_ids = [int(x.strip()) for x in ids_input.split(",")]
+            except ValueError:
+                logger.error("Неверный формат ID.")
+                return
+
+            result = await session.execute(delete(User).where(User.id.in_(user_ids)))
+            await session.commit()
+
+            deleted_count = result.rowcount
+            logger.info(f"Удалено {deleted_count} пользователей.")
+
+        elif choice == "3":
+            confirm = input("Вы уверены, что хотите удалить всех пользователей? (y/N): ").strip().lower()
+            if confirm == "y":
+                result = await session.execute(delete(User))
+                await session.commit()
+                deleted_count = result.rowcount
+                logger.info(f"Удалено {deleted_count} пользователей.")
+            else:
+                logger.info("Удаление отменено.")
+
+        else:
+            logger.warning("Неверный выбор.")
 
 
 def show_menu():
@@ -145,7 +176,7 @@ def show_menu():
     print("1. Создать пользователя(-ей)")
     print("2. Просмотреть всех пользователей")
     print("3. Обновить пользователя")
-    print("4. Удалить пользователя")
+    print("4. Удалить пользователя (одного/нескольких/всех)")
     print("0. Выйти")
     print("=" * 40)
 
