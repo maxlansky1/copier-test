@@ -1,25 +1,39 @@
 """
-Инициализация моделей конфигурации
+Пакет схем конфигурации Pydantic.
 """
 
-from ai import AssemblyAISettings, ElevenLabsSettings, OpenRouterSettings
-from base import BaseConfig
-from file_processing import MediaProcessingSettings
-from storage import StorageSettings
-from telegram import TelegramSettings
-
-from src.utils.logger import get_logger
-
-logger = get_logger(__name__)
+from .ai import (
+    AssemblyAISettings,
+    ElevenLabsSettings,
+    OpenRouterSettings,
+)
+from .base import BaseConfig
+from .database import (
+    DatabaseSettings,
+    SQLiteSettings,
+    RedisSettings,
+    VectorDBSettings,
+)
+from .file_processing import MediaProcessingSettings
+from .storage import StorageSettings
+from .telegram import TelegramSettings
 
 __all__ = [
-    "BaseConfig",
-    "TelegramSettings",
-    "OpenRouterSettings",
+    # AI
     "AssemblyAISettings",
-    "ElevenLabsSettings",
-    "StorageSettings",
+    "ElevenLabsSettings", 
+    "OpenRouterSettings",
+    # Base
+    "BaseConfig",
+    # Database
+    "DatabaseSettings",
+    "SQLiteSettings",
+    "RedisSettings", 
+    "VectorDBSettings",
+    # File Processing
     "MediaProcessingSettings",
+    # Storage
+    "StorageSettings",
+    # Telegram
+    "TelegramSettings",
 ]
-
-logger.debug("Конфигурационные модели загружены")

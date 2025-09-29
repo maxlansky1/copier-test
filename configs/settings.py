@@ -10,6 +10,7 @@ from configs.schemas.ai import (
     OpenRouterSettings,
 )
 from configs.schemas.base import BaseConfig
+from configs.schemas.database import DatabaseSettings
 from configs.schemas.file_processing import MediaProcessingSettings
 from configs.schemas.storage import StorageSettings
 from configs.schemas.telegram import TelegramSettings
@@ -30,6 +31,7 @@ class AppSettings(BaseConfig):
     assemblyai: AssemblyAISettings = AssemblyAISettings()
     elevenlabs: ElevenLabsSettings = ElevenLabsSettings()
     storage: StorageSettings = StorageSettings()
+    database: DatabaseSettings = DatabaseSettings()  # Новые настройки БД
     file_processing: MediaProcessingSettings = MediaProcessingSettings()
 
     # Синглтон для производительности и консистентности
@@ -75,6 +77,7 @@ class AppSettings(BaseConfig):
             "TELEGRAM_BOT_TOKEN",
             "ASSEMBLYAI_API_KEY",
             "ELEVENLABS_API_KEY",
+            "password",  # Добавляем пароли
         ]
 
         def sanitize_dict(d: dict) -> dict:

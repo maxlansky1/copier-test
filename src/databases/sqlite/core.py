@@ -7,26 +7,26 @@
 - async_session — фабрика асинхронных сессий
 """
 
-import os
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
+
+from configs.settings import settings
 
 # Базовый класс для всех ORM-моделей
 Base = declarative_base()
 
-# Получаем URL подключения к БД из переменной окружения
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./db.sqlite3")
-
-# Создаём асинхронный движок
+# Создаём асинхронный движок с настройками из конфига
 engine = create_async_engine(
-    DATABASE_URL,
-    echo=False,  # Включить True для логирования SQL-запросов
-    pool_pre_ping=True,  # Проверяет соединение перед использованием
+    settings.database.sqlite.database_url,
+    echo=settings.database.sqlite.echo,
+    pool_pre_ping=settings.database.sqlite.pool_pre_ping,
+    pool_size=settings.database.sqlite.pool_size,
+    max_overflow=settings.database.sqlite.max_overflow,
 )
 
 # Фабрика асинхронных сессий
 async_session = async_sessionmaker(
     engine,
-    expire_on_commit=False,  # Не устаревают объекты после commit
-    autoflush=False,         # Отключаем автоматический flush
+    expire_on_commit=settings.database.sqlite.expire_on_commit,
+    autoflush=settings.database.sqlite.autoflush,
 )
