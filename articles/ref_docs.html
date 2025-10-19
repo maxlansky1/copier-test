@@ -1,0 +1,2486 @@
+
+
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="ref_cicd.html">
+      
+      
+        <link rel="next" href="ref_tools.html">
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>docs/ - документация projectTemplate 0.1</title>
+      
+    
+    
+      
+        
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.acf80fe7f4d9ef9e2.min.css?v=9e56d0d2" />
+        <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+        <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#index-rst" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="документация projectTemplate 0.1" class="md-header__button md-logo" aria-label="документация projectTemplate 0.1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            документация projectTemplate 0.1
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              docs/
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Поделиться" aria-label="Поделиться" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/maxlansky1/projectTemplate" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    projectTemplate
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="документация projectTemplate 0.1" class="md-nav__button md-logo" aria-label="документация projectTemplate 0.1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    документация projectTemplate 0.1
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/maxlansky1/projectTemplate" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    projectTemplate
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>🚀 Начало работы <wbr>(Tutorials)</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>🚀 Начало работы <wbr>(Tutorials)</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Введение</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Быстрый старт</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_install_python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Установка и настройка Python</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_install_vscode.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Установка и настройка Visual Studio Code</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_install_vscode.html#notepad" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Установка Notepad++</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_install_git.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Установка и настройка Git</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_install_copier.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Как копировать шаблон проекта при помощи copier</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Руководства <wbr>(Topic Guides)</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Руководства <wbr>(Topic Guides)</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Архитектурные принципы</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="project_structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Структура проекта</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="databases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>🗄️ Подключение и настройка SQL</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="configs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Конфигурация</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="documentation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>📚 Работа с документацией</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="diagrams.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>📝 Диаграммы в документации и проектировании</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="diagrams.html#id5" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Теория диаграмм</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Практические руководства <wbr>(How-<wbr>to Guides)</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Практические руководства <wbr>(How-<wbr>to Guides)</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_venv.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Как работать с виртуальным окружением</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_precommit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Как работать с pre-<wbr>commit</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_make_docs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Как работать с документацией</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how_to_deploy_app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Как развернуть приложение <wbr>(CI/CD)</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Справочные материалы <wbr>(Reference Guides)</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Справочные материалы <wbr>(Reference Guides)</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_vscode.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>VS Code</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_venv.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Виртуальное окружение Python <wbr>(venv)</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_git.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Git</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_copier.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>copier</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_precommit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>pre-<wbr>commit</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_configs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>configs/</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_docker.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Docker</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_cicd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>CI/CD</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>docs/</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>docs/</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span>docs/</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#index-rst" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>index.<wbr>rst</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="index.rst">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Назначение</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#makefile" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Makefile</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Makefile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Переменные</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Цели <wbr>(Targets)</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-bat" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>make.<wbr>bat</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="make.bat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Переменные</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Функциональность</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conf-py" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>conf.<wbr>py</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="conf.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Информация о проекте</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uml-plantuml" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки генерации UML-<wbr>диаграмм <wbr>(Plant<wbr>UML)</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sphinx" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Расширения Sphinx</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки автодокументации</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#myst-parser" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки My<wbr>ST Parser</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Обработка исходных файлов</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-sphinx-immaterial" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки HTML-<wbr>темы <wbr>(sphinx_<wbr>immaterial)</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Статические файлы</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id9" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Дополнительные настройки</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_tools.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tools/</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_logger.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Логирование</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref_sql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Справочник SQL</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="c4_plantuml.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Введение в C4 Plant<wbr>UML</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="recommendations.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Recommendations:<wbr> Полезные дополнения</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span>docs/</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#index-rst" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>index.<wbr>rst</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="index.rst">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Назначение</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#makefile" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Makefile</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Makefile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Переменные</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Цели <wbr>(Targets)</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-bat" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>make.<wbr>bat</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="make.bat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Переменные</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Функциональность</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conf-py" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>conf.<wbr>py</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="conf.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Информация о проекте</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uml-plantuml" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки генерации UML-<wbr>диаграмм <wbr>(Plant<wbr>UML)</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sphinx" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Расширения Sphinx</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки автодокументации</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#myst-parser" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки My<wbr>ST Parser</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Обработка исходных файлов</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-sphinx-immaterial" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Настройки HTML-<wbr>темы <wbr>(sphinx_<wbr>immaterial)</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Статические файлы</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id9" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Дополнительные настройки</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+  
+    <a href="https://github.com/maxlansky1/projectTemplate/blob/main/docs/articles/ref_docs.md" title="Редактировать страницу" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/maxlansky1/projectTemplate/raw/main/docs/articles/ref_docs.md" title="Посмотреть исходный код страницы" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+<h1 id="docs"><code class="docutils literal notranslate"><span class="pre">docs/</span></code><a class="headerlink" href="#docs" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Этот документ предоставляет справочную информацию о конфигурационных файлах, используемых для сборки документации с помощью Sphinx и MyST Parser в проекте.</p>
+<h2 id="index-rst"><code class="docutils literal notranslate"><span class="pre">index.rst</span></code><a class="headerlink" href="#index-rst" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">index.rst</span></code> - <strong>главный входной файл</strong> для документации Sphinx, определяющий <strong>структуру и навигацию</strong> между документами.</p>
+<div class="toggle docutils container">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>index.rst<a class="headerlink" href="#id10" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><code><span class="c">.. projectTemplate documentation master file, created by</span>
+<span class="c">   sphinx-quickstart on Tue Jul  8 21:57:49 2025.</span>
+<span class="c">   You can adapt this file completely to your liking, but it should at least</span>
+<span class="c">   contain the root `toctree` directive.</span>
+
+<span class="gh">projectTemplate</span>
+<span class="gh">=============================</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 6
+   <span class="nc">:caption:</span> 🚀 Начало работы (Tutorials)
+
+   articles/introduction
+   articles/getting_started
+   articles/how_to_install_python
+   articles/how_to_install_vscode
+   articles/how_to_install_git
+   articles/how_to_install_copier
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 6
+   <span class="nc">:caption:</span> Руководства (Topic Guides)
+
+   articles/architecture
+   articles/project_structure
+   articles/databases
+   articles/configs
+   articles/documentation
+   articles/diagrams
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 6
+   <span class="nc">:caption:</span> Практические руководства (How-to Guides)
+
+   articles/how_to_venv
+   articles/how_to_precommit
+   
+   articles/how_to_make_docs.md
+   articles/how_to_deploy_app.md
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 6
+   <span class="nc">:caption:</span> Справочные материалы (Reference Guides)
+
+   articles/ref_vscode
+   articles/ref_venv
+   articles/ref_git
+   articles/ref_copier
+   articles/ref_precommit
+   articles/ref_configs
+   articles/ref_docker
+   articles/ref_cicd
+   articles/ref_docs
+   articles/ref_tools
+   articles/ref_logger
+   articles/ref_sql
+   articles/c4_plantuml
+   articles/recommendations
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="id1">Назначение<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Точка входа:</strong> Sphinx начинает сборку документации с этого файла. Он определяет, какие документы включены в проект и как они связаны между собой.</p></li>
+<li><p><strong>Сборка:</strong> Файл <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> содержит директиву <code class="docutils literal notranslate"><span class="pre">toctree</span></code>, которая “собирает” все указанные в ней исходные файлы (включая <code class="docutils literal notranslate"><span class="pre">*.md</span></code>, обрабатываемые через <code class="docutils literal notranslate"><span class="pre">myst_parser</span></code>) в единую иерархическую структуру HTML-страниц.</p></li>
+<li><p><strong>Навигация:</strong> На основе содержимого <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> (в частности, <code class="docutils literal notranslate"><span class="pre">toctree</span></code>) генерируется основное оглавление и навигационное меню для HTML-документации.</p></li>
+</ul>
+<h2 id="makefile">Makefile<a class="headerlink" href="#makefile" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Makefile</span></code> автоматизирует процесс локальной сборки документации Sphinx в Unix-подобных системах (Linux, macOS).</p>
+<div class="toggle docutils container">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Makefile<a class="headerlink" href="#id11" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><code><span class="c"># Minimal makefile for Sphinx documentation</span>
+<span class="c">#</span>
+
+<span class="c"># Variables</span>
+<span class="nv">SPHINXOPTS</span><span class="w">    </span><span class="o">?=</span><span class="w"> </span>
+<span class="nv">SPHINXBUILD</span><span class="w">   </span><span class="o">?=</span><span class="w"> </span>sphinx-build
+<span class="nv">SOURCEDIR</span><span class="w">     </span><span class="o">=</span><span class="w"> </span>.
+<span class="nv">BUILDDIR</span><span class="w">      </span><span class="o">=</span><span class="w"> </span>_build
+
+<span class="c"># Uncomment these two lines if you want to use a specific Python interpreter</span>
+<span class="c"># PYTHON        ?= python3</span>
+<span class="c"># SPHINXBUILD   ?= $(PYTHON) -m sphinx</span>
+
+<span class="c"># Targets</span>
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">help</span> <span class="n">clean</span> <span class="n">livehtml</span> <span class="n">html</span>
+
+<span class="nf">help</span><span class="o">:</span>
+<span class="w">	</span>@<span class="k">$(</span>SPHINXBUILD<span class="k">)</span><span class="w"> </span>-M<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>SOURCEDIR<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">$(</span>SPHINXOPTS<span class="k">)</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">	</span>@<span class="k">$(</span>SPHINXBUILD<span class="k">)</span><span class="w"> </span>-M<span class="w"> </span>clean<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>SOURCEDIR<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">$(</span>SPHINXOPTS<span class="k">)</span>
+
+<span class="nf">html</span><span class="o">:</span>
+<span class="w">	</span>@<span class="k">$(</span>SPHINXBUILD<span class="k">)</span><span class="w"> </span>-M<span class="w"> </span>html<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>SOURCEDIR<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">$(</span>SPHINXOPTS<span class="k">)</span>
+<span class="w">	</span>@echo
+<span class="w">	</span>@echo<span class="w"> </span><span class="s2">&quot;Build finished. The HTML pages are in </span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">/html.&quot;</span>
+
+<span class="nf">livehtml</span><span class="o">:</span>
+<span class="w">	</span>sphinx-autobuild<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>SOURCEDIR<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">/html&quot;</span><span class="w"> </span>--open-browser<span class="w"> </span>--port<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="k">$(</span>SPHINXOPTS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>O<span class="k">)</span>
+
+<span class="c">#TODO: забиндить постоянный порт для livehtml</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="id2">Переменные<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SPHINXOPTS</span></code>: Дополнительные опции для <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>. По умолчанию пусто (<code class="docutils literal notranslate"><span class="pre">?=</span></code> означает, что переменная может быть переопределена извне).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPHINXBUILD</span></code>: Команда для вызова <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>. По умолчанию <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SOURCEDIR</span></code>: Директория с исходными файлами документации. Установлено в <code class="docutils literal notranslate"><span class="pre">.</span></code> (текущая директория, т.е. <code class="docutils literal notranslate"><span class="pre">docs</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BUILDDIR</span></code>: Директория, куда будет собрана документация. Установлено в <code class="docutils literal notranslate"><span class="pre">_build</span></code>.</p></li>
+</ul>
+<h3 id="targets">Цели (Targets)<a class="headerlink" href="#targets" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code>: Выводит справку по доступным целям <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean</span></code>: Удаляет содержимое <code class="docutils literal notranslate"><span class="pre">BUILDDIR</span></code>, очищая кэш и результаты предыдущих сборок.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code>: Запускает <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> для генерации HTML-документации в <code class="docutils literal notranslate"><span class="pre">$(BUILDDIR)/html</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">livehtml</span></code>: Использует <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code> для запуска сервера разработки с автоматической перезагрузкой при изменении файлов. Открывает браузер. Порт выбирается автоматически.</p></li>
+</ul>
+<h2 id="make-bat">make.bat<a class="headerlink" href="#make-bat" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">make.bat</span></code> - скрипт командной строки Windows, эквивалентный <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, обеспечивающий автоматизацию сборки документации Sphinx в Windows.</p>
+<div class="toggle docutils container">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>make.bat<a class="headerlink" href="#id12" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span><code>@ECHO OFF
+
+pushd %~dp0
+
+REM Command file for Sphinx documentation
+
+if &quot;%SPHINXBUILD%&quot; == &quot;&quot; (
+	set SPHINXBUILD=sphinx-build
+)
+set SOURCEDIR=.
+set BUILDDIR=_build
+
+%SPHINXBUILD% &gt;NUL 2&gt;NUL
+if errorlevel 9009 (
+	echo.
+	echo.The &#39;sphinx-build&#39; command was not found. Make sure you have Sphinx
+	echo.installed, then set the SPHINXBUILD environment variable to point
+	echo.to the full path of the &#39;sphinx-build&#39; executable. Alternatively you
+	echo.may add the Sphinx directory to PATH.
+	echo.
+	echo.If you don&#39;t have Sphinx installed, grab it from
+	echo.https://www.sphinx-doc.org/
+	exit /b 1
+)
+
+REM Check if sphinx-autobuild is available
+if &quot;%1&quot; == &quot;livehtml&quot; (
+    where sphinx-autobuild &gt;nul 2&gt;nul
+    if errorlevel 1 (
+        echo.sphinx-autobuild is not installed. Run &#39;pip install sphinx-autobuild&#39; first.
+        exit /b 1
+    )
+    sphinx-autobuild %SOURCEDIR% %BUILDDIR%/html --open-browser --port=0
+    goto end
+)
+
+if &quot;%1&quot; == &quot;&quot; goto help
+
+%SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+goto end
+
+:help
+%SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+
+:end
+popd
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="id3">Переменные<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SPHINXBUILD</span></code>: Команда для вызова <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>. Если не установлена, по умолчанию используется <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SOURCEDIR</span></code>: Директория с исходными файлами документации. Установлено в <code class="docutils literal notranslate"><span class="pre">.</span></code> (текущая директория, т.е. <code class="docutils literal notranslate"><span class="pre">docs</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BUILDDIR</span></code>: Директория, куда будет собрана документация. Установлено в <code class="docutils literal notranslate"><span class="pre">_build</span></code>.</p></li>
+</ul>
+<h3 id="id4">Функциональность<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p>Проверяет наличие <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> в PATH. Если не находит, выводит сообщение об ошибке и инструкции по установке.</p></li>
+<li><p>Проверяет наличие <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code> при вызове цели <code class="docutils literal notranslate"><span class="pre">livehtml</span></code>. Если не находит, выводит сообщение об ошибке.</p></li>
+<li><p>Обрабатывает переданный аргумент (например, <code class="docutils literal notranslate"><span class="pre">html</span></code>, <code class="docutils literal notranslate"><span class="pre">clean</span></code>, <code class="docutils literal notranslate"><span class="pre">livehtml</span></code>) и вызывает соответствующую команду <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> или <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code>.</p></li>
+<li><p>Цель <code class="docutils literal notranslate"><span class="pre">help</span></code> вызывает <code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">-M</span> <span class="pre">help</span></code> для отображения справки.</p></li>
+</ul>
+<h2 id="conf-py">conf.py<a class="headerlink" href="#conf-py" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">conf.py</span></code> - основной <strong>конфигурационный файл Sphinx</strong>, написанный на Python. Он выполняется во время сборки и определяет все настройки документации.</p>
+<div class="toggle docutils container">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>conf.py<a class="headerlink" href="#id13" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Конфигурационный файл для сборщика документации Sphinx.</span>
+
+<span class="sd">Этот файл содержит все настройки, необходимые для кастомизации входных и выходных данных Sphinx.</span>
+<span class="sd">Он выполняется как код на Python во время сборки, при этом текущая директория устанавливается как директория конфигурации.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># Переменная окружения: флаг сборки документации</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SPHINX_BUILD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+
+<span class="c1"># Добавляет родительскую директорию в системный путь, чтобы Sphinx мог найти исходные модули</span>
+<span class="c1"># Получаем путь к корню проекта и</span>
+<span class="n">project_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">))</span>
+<span class="n">template_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_root</span><span class="p">,</span> <span class="s2">&quot;diagrams&quot;</span><span class="p">,</span> <span class="s2">&quot;template&quot;</span><span class="p">)</span>
+<span class="n">icons_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_root</span><span class="p">,</span> <span class="s2">&quot;diagrams&quot;</span><span class="p">,</span> <span class="s2">&quot;icons&quot;</span><span class="p">)</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">project_root</span><span class="p">)</span>
+
+<span class="c1"># Отладка для системного пути</span>
+<span class="c1"># print(f&quot;[DEBUG] Adding to sys.path: {project_root}&quot;)</span>
+
+<span class="c1"># Информация о проекте для документации</span>
+<span class="n">project</span> <span class="o">=</span> <span class="s2">&quot;projectTemplate&quot;</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="s2">&quot;2025, maxlansky&quot;</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s2">&quot;maxlansky&quot;</span>
+<span class="n">release</span> <span class="o">=</span> <span class="s2">&quot;0.1&quot;</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># НАСТРОЙКИ ГЕНЕРАЦИИ UML-ДИАГРАММ (PlantUML)</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="c1"># Настройки для работы с PlantUML и рендеринга UML-диаграмм.</span>
+<span class="c1"># В GitHub Actions используется путь /usr/local/bin/plantuml/plantuml.jar, а для Windows — C:\\plantuml\\plantuml.jar.</span>
+<span class="k">if</span> <span class="s2">&quot;GITHUB_ACTIONS&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="c1"># Собираем полную команду: добавляем относительный путь, указываем относительные пути ко всем нужным файлам</span>
+    <span class="n">plantuml</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;java -jar &quot;/usr/local/bin/plantuml/plantuml.jar&quot; &quot;</span><span class="si">{</span><span class="n">template_path</span><span class="si">}</span><span class="s1">&quot; &quot;</span><span class="si">{</span><span class="n">icons_path</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+<span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;nt&quot;</span><span class="p">:</span>  <span class="c1"># Для Windows</span>
+    <span class="n">plantuml</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;java -jar &quot;C:</span><span class="se">\\</span><span class="s1">plantuml</span><span class="se">\\</span><span class="s1">plantuml.jar&quot; -I&quot;</span><span class="si">{</span><span class="n">template_path</span><span class="si">}</span><span class="s1">&quot; -I&quot;</span><span class="si">{</span><span class="n">icons_path</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+    <span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s2">&quot;Unsupported OS&quot;</span><span class="p">)</span>
+
+<span class="c1"># Формат рендера диаграммы</span>
+<span class="n">plantuml_output_format</span> <span class="o">=</span> <span class="s2">&quot;svg_img&quot;</span>
+<span class="n">plantuml_latex_output_format</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># РАСШИРЕНИЯ SPHINX</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="c1"># Список расширений Sphinx</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># === Поддержка форматов ===</span>
+    <span class="s2">&quot;myst_parser&quot;</span><span class="p">,</span>  <span class="c1"># поддержка Markdown (.md)</span>
+    <span class="c1"># === Автодокументация ===</span>
+    <span class="s2">&quot;sphinx.ext.autodoc&quot;</span><span class="p">,</span>  <span class="c1"># автодока из docstring&#39;ов</span>
+    <span class="s2">&quot;sphinx.ext.viewcode&quot;</span><span class="p">,</span>  <span class="c1"># ссылки на исходники</span>
+    <span class="s2">&quot;sphinx.ext.napoleon&quot;</span><span class="p">,</span>  <span class="c1"># Google/NumPy стиль docstring&#39;ов</span>
+    <span class="s2">&quot;sphinxcontrib.autodoc_pydantic&quot;</span><span class="p">,</span>  <span class="c1"># Улучшенная работа с Pydantic</span>
+    <span class="c1"># === Утилиты и вспомогательные расширения ===</span>
+    <span class="s2">&quot;sphinx.ext.coverage&quot;</span><span class="p">,</span>  <span class="c1"># проверяет покрытие документации</span>
+    <span class="s2">&quot;sphinx_copybutton&quot;</span><span class="p">,</span>  <span class="c1"># добавляет кнопку скопировать код в документацию</span>
+    <span class="s2">&quot;sphinx_togglebutton&quot;</span><span class="p">,</span>  <span class="c1"># позволяет создавать разворачиваемые списки</span>
+    <span class="c1"># === Визуализация и темы ===</span>
+    <span class="s2">&quot;sphinxcontrib.plantuml&quot;</span><span class="p">,</span>  <span class="c1"># добавляет поддержку plantuml</span>
+    <span class="s2">&quot;sphinx_immaterial&quot;</span><span class="p">,</span>  <span class="c1"># использовать тему mk docs</span>
+    <span class="c1"># === GitHub Pages ===</span>
+    <span class="s2">&quot;sphinx.ext.githubpages&quot;</span><span class="p">,</span>  <span class="c1"># позволяет использовать стили sphinx при хостинге доков на github pages</span>
+<span class="p">]</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># НАСТРОЙКИ АВТОДОКУМЕНТАЦИИ</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="c1"># === Настройки autodoc ===</span>
+<span class="n">autodoc_default_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Показывать публичные элементы</span>
+    <span class="s2">&quot;undoc-members&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Показывать недокументированные члены (а не скрывать!)</span>
+    <span class="s2">&quot;private-members&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="c1"># Показывать приватные методы (_method) (а не скрывать!)</span>
+    <span class="s2">&quot;special-members&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="c1"># Показывать специальные методы (__init__, __str__) (а не скрывать!)</span>
+    <span class="s2">&quot;inherited-members&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="c1"># Показывать унаследованные методы</span>
+    <span class="s2">&quot;show-inheritance&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Показывать иерархию наследования</span>
+    <span class="s2">&quot;exclude-members&quot;</span><span class="p">:</span> <span class="s2">&quot;__weakref__&quot;</span><span class="p">,</span>  <span class="c1"># Исключить конкретные элементы</span>
+<span class="p">}</span>
+
+<span class="c1"># Порядок элементов по исходному коду (естественнее для чтения)</span>
+<span class="n">autodoc_member_order</span> <span class="o">=</span> <span class="s2">&quot;bysource&quot;</span>
+<span class="c1"># Включать docstring класса + __init__ метода</span>
+<span class="n">autoclass_content</span> <span class="o">=</span> <span class="s2">&quot;both&quot;</span>
+<span class="c1"># Формат типов - короткий (чище выглядит)</span>
+<span class="c1"># autodoc_typehints_format = &quot;short&quot;</span>
+<span class="c1"># Отображение типов в описании (удобнее для чтения)</span>
+<span class="c1"># autodoc_typehints = &quot;description&quot;</span>
+
+<span class="c1"># === Настройки autodoc-pydantic ===</span>
+<span class="n">autodoc_pydantic_model_show_json</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">autodoc_pydantic_model_show_config_summary</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">autodoc_pydantic_model_show_validator_summary</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># autodoc_pydantic_model_erdantic_figure = True</span>
+<span class="c1"># autodoc_pydantic_model_erdantic_figure_collapsed = True</span>
+<span class="n">autodoc_pydantic_field_list_validators</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<span class="c1"># === Настройки sphinx.ext.napoleon ===</span>
+<span class="n">napoleon_google_docstring</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">napoleon_numpy_docstring</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># если используете только Google стиль</span>
+<span class="n">napoleon_include_init_with_doc</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">napoleon_include_private_with_doc</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">napoleon_use_param</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># === Настройки для myst_parser ===</span>
+<span class="n">myst_enable_extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;amsmath&quot;</span><span class="p">,</span>  <span class="c1"># математика</span>
+    <span class="s2">&quot;colon_fence&quot;</span><span class="p">,</span>  <span class="c1"># ::: для блоков кода</span>
+    <span class="s2">&quot;deflist&quot;</span><span class="p">,</span>  <span class="c1"># определения</span>
+    <span class="s2">&quot;dollarmath&quot;</span><span class="p">,</span>  <span class="c1"># $...$ для математики</span>
+    <span class="s2">&quot;fieldlist&quot;</span><span class="p">,</span>  <span class="c1"># списки полей</span>
+    <span class="s2">&quot;html_admonition&quot;</span><span class="p">,</span>  <span class="c1"># HTML admonitions</span>
+    <span class="s2">&quot;html_image&quot;</span><span class="p">,</span>  <span class="c1"># HTML изображения</span>
+    <span class="s2">&quot;replacements&quot;</span><span class="p">,</span>  <span class="c1"># замены (c/o -&gt; ©/®)</span>
+    <span class="s2">&quot;smartquotes&quot;</span><span class="p">,</span>  <span class="c1"># красивые кавычки</span>
+    <span class="s2">&quot;strikethrough&quot;</span><span class="p">,</span>  <span class="c1"># зачеркнутый текст</span>
+    <span class="s2">&quot;substitution&quot;</span><span class="p">,</span>  <span class="c1"># подстановки</span>
+    <span class="s2">&quot;tasklist&quot;</span><span class="p">,</span>  <span class="c1"># чекбоксы</span>
+<span class="p">]</span>
+
+<span class="c1"># Автоматическое создание якорей на любой заголовок (7 уровней)</span>
+<span class="c1"># TODO: продумать систему автоматической нумерации глав, разделов, диаграмм, таблиц, графиков итд</span>
+<span class="n">myst_heading_anchors</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># ОБРАБОТКА ИСХОДНЫХ ФАЙЛОВ</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="c1"># Настройки для обработки исходных файлов, шаблонов, исключений и вывода HTML</span>
+<span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;.rst&quot;</span><span class="p">:</span> <span class="s2">&quot;restructuredtext&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.md&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_templates&quot;</span><span class="p">]</span>
+<span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;_build&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Thumbs.db&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.DS_Store&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.git&quot;</span><span class="p">,</span>  <span class="c1"># игнорировать .git</span>
+    <span class="s2">&quot;.venv&quot;</span><span class="p">,</span>  <span class="c1"># виртуальное окружение</span>
+    <span class="s2">&quot;venv&quot;</span><span class="p">,</span>  <span class="c1"># альтернативный вариант</span>
+    <span class="s2">&quot;.env&quot;</span><span class="p">,</span>  <span class="c1"># файлы env</span>
+    <span class="s2">&quot;*.pyc&quot;</span><span class="p">,</span>  <span class="c1"># скомпилированные Python файлы</span>
+    <span class="s2">&quot;*~&quot;</span><span class="p">,</span>  <span class="c1"># временные файлы</span>
+<span class="p">]</span>
+
+<span class="n">language</span> <span class="o">=</span> <span class="s2">&quot;ru&quot;</span>
+
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># НАСТРОЙКИ HTML-ТЕМЫ</span>
+<span class="c1"># ============================================================================</span>
+<span class="c1"># TODO: доделать кастомные настройки темы</span>
+<span class="c1"># Настройки темы Mk Docs</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;sphinx_immaterial&quot;</span>
+<span class="c1"># material theme options (see theme.conf for more information)</span>
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;repo&quot;</span><span class="p">:</span> <span class="s2">&quot;fontawesome/brands/github&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="s2">&quot;material/file-edit-outline&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;site_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://maxlansky1.github.io/projectTemplate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;repo_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/maxlansky1/projectTemplate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;projectTemplate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;edit_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;blob/main/docs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;globaltoc_collapse&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;navigation.expand&quot;</span><span class="p">,</span>
+        <span class="c1"># &quot;navigation.tabs&quot;,</span>
+        <span class="c1"># &quot;navigation.tabs.sticky&quot;,</span>
+        <span class="c1"># &quot;toc.integrate&quot;,</span>
+        <span class="s2">&quot;navigation.sections&quot;</span><span class="p">,</span>
+        <span class="c1"># &quot;navigation.instant&quot;,</span>
+        <span class="c1"># &quot;header.autohide&quot;,</span>
+        <span class="s2">&quot;navigation.top&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;navigation.footer&quot;</span><span class="p">,</span>
+        <span class="c1"># &quot;navigation.tracking&quot;,</span>
+        <span class="c1"># &quot;search.highlight&quot;,</span>
+        <span class="s2">&quot;search.share&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;search.suggest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;toc.follow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;toc.sticky&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content.tabs.link&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content.code.copy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content.action.edit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content.action.view&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content.tooltips&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;announce.dismiss&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;media&quot;</span><span class="p">:</span> <span class="s2">&quot;(prefers-color-scheme)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toggle&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;material/brightness-auto&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Switch to light mode&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;media&quot;</span><span class="p">:</span> <span class="s2">&quot;(prefers-color-scheme: light)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="s2">&quot;light-green&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;accent&quot;</span><span class="p">:</span> <span class="s2">&quot;light-blue&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toggle&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;material/lightbulb&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Switch to dark mode&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;media&quot;</span><span class="p">:</span> <span class="s2">&quot;(prefers-color-scheme: dark)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;slate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="s2">&quot;deep-orange&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;accent&quot;</span><span class="p">:</span> <span class="s2">&quot;lime&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toggle&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;material/lightbulb-outline&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Switch to system preference&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="c1"># BEGIN: version_dropdown</span>
+    <span class="s2">&quot;version_dropdown&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;version_info&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sphinx-immaterial.rtfd.io&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;ReadTheDocs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;aliases&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;https://jbms.github.io/sphinx-immaterial&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Github Pages&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;aliases&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="c1"># END: version_dropdown</span>
+    <span class="s2">&quot;toc_title_is_page_title&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="c1"># BEGIN: social icons</span>
+    <span class="s2">&quot;social&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;fontawesome/brands/github&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/jbms/sphinx-immaterial&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Source on github.com&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;fontawesome/brands/python&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pypi.org/project/sphinx-immaterial/&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="c1"># END: social icons</span>
+<span class="p">}</span>
+
+<span class="c1"># Настройки для истории изменений документации</span>
+<span class="n">html_context</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># === GitHub ===</span>
+    <span class="s2">&quot;github_user&quot;</span><span class="p">:</span> <span class="s2">&quot;maxlansky&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;github_repo&quot;</span><span class="p">:</span> <span class="s2">&quot;projectTemplate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;github_version&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;display_github&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="c1"># === Версии (только если реально планируешь версионирование) ===</span>
+    <span class="c1"># &#39;current_version&#39;: release,  # автоматически из release</span>
+    <span class="c1"># &#39;versions&#39;: {</span>
+    <span class="c1">#     &#39;latest&#39;: &#39;/&#39;,  # текущая версия</span>
+    <span class="c1">#     &#39;0.1&#39;: &#39;/0.1/&#39;,  # предыдущие версии</span>
+    <span class="c1"># },</span>
+    <span class="c1"># === Дополнительно (для Read the Docs и других хостингов) ===</span>
+    <span class="s2">&quot;source_type&quot;</span><span class="p">:</span> <span class="s2">&quot;github&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_user&quot;</span><span class="p">:</span> <span class="s2">&quot;maxlansky&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_repo&quot;</span><span class="p">:</span> <span class="s2">&quot;projectTemplate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_version&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_suffix&quot;</span><span class="p">:</span> <span class="s2">&quot;.rst&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># СТАТИЧЕСКИЕ ФАЙЛЫ (CSS, JS)</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="c1"># Подключаем кастомные CSS и JS файлы</span>
+<span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_static&quot;</span><span class="p">]</span>
+
+<span class="n">html_js_files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;custom.js&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;custom.css&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># ДОПОЛНИТЕЛЬНЫЕ НАСТРОЙКИ</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="c1"># Дополнительная конфигурация sphinx-git (опционально)</span>
+<span class="n">git_untracked_check</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">git_remote_name</span> <span class="o">=</span> <span class="s2">&quot;origin&quot;</span>
+<span class="n">git_branch</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span>  <span class="c1"># или &#39;master&#39;, в зависимости от твоей ветки</span>
+
+<span class="c1"># === Настройки sphinx-togglebutton ===</span>
+
+<span class="c1"># Настройка CSS-селектора для элементов</span>
+<span class="n">togglebutton_selector</span> <span class="o">=</span> <span class="s2">&quot;.toggle, .admonition.dropdown&quot;</span>
+
+<span class="c1"># Настройка текста подсказки</span>
+<span class="n">togglebutton_hint</span> <span class="o">=</span> <span class="s2">&quot;Развернуть&quot;</span>
+<span class="n">togglebutton_hint_hide</span> <span class="o">=</span> <span class="s2">&quot;Свернуть&quot;</span>
+
+<span class="c1"># Поведение при печати. По умолчанию True (разворачивает все элементы)</span>
+<span class="n">togglebutton_open_on_print</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="id5">Информация о проекте<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">project</span></code>: Имя проекта</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copyright</span></code>: Информация об авторских правах</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">author</span></code>: Имя автора</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">release</span></code>: Полная версия проекта</p></li>
+</ul>
+<h3 id="uml-plantuml">Настройки генерации UML-диаграмм (PlantUML)<a class="headerlink" href="#uml-plantuml" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plantuml</span></code>: Команда для вызова исполняемого файла PlantUML. Настройка отличается в зависимости от операционной системы (Windows или GitHub Actions) и включает пути к шаблонам (<code class="docutils literal notranslate"><span class="pre">template_path</span></code>) и иконкам (<code class="docutils literal notranslate"><span class="pre">icons_path</span></code>) для C4 диаграмм.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plantuml_output_format</span></code>: Формат вывода диаграмм. Установлен в <code class="docutils literal notranslate"><span class="pre">&quot;svg_img&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plantuml_latex_output_format</span></code>: Формат вывода диаграмм для LaTeX. Установлен в <code class="docutils literal notranslate"><span class="pre">&quot;svg&quot;</span></code>.</p></li>
+</ul>
+<h3 id="sphinx">Расширения Sphinx<a class="headerlink" href="#sphinx" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Список <code class="docutils literal notranslate"><span class="pre">extensions</span></code> включает используемые расширения Sphinx:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">myst_parser</span></code>: Поддержка формата MyST Markdown (<code class="docutils literal notranslate"><span class="pre">.md</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.autodoc</span></code>: Автодокументация из docstring’ов Python-кода.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.viewcode</span></code>: Ссылки на исходный код в документации.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.napoleon</span></code>: Поддержка docstring’ов в формате Google и NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.coverage</span></code>: Проверка покрытия документацией.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_copybutton</span></code>: Добавляет кнопку “копировать” к блокам кода.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_togglebutton</span></code>: Позволяет создавать разворачиваемые блоки.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinxcontrib.plantuml</span></code>: Поддержка PlantUML диаграмм.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_immaterial</span></code>: Используемая HTML-тема (аналог Material for MkDocs).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.githubpages</span></code>: Помогает при хостинге документации на GitHub Pages.</p></li>
+</ul>
+<h3 id="id6">Настройки автодокументации<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">autodoc_default_options</span></code>: Определяет, какие элементы Python-кода (members, undoc-members, private-members, special-members, inherited-members) включать в автодокументацию, а также настройки отображения (например, <code class="docutils literal notranslate"><span class="pre">show-inheritance</span></code>, <code class="docutils literal notranslate"><span class="pre">exclude-members</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autodoc_member_order</span></code>: Порядок отображения элементов. Установлен в <code class="docutils literal notranslate"><span class="pre">&quot;bysource&quot;</span></code> (по порядку в исходном коде).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autoclass_content</span></code>: Что включать в документацию класса. Установлено в <code class="docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code> (и docstring класса, и метод <code class="docutils literal notranslate"><span class="pre">__init__</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autodoc_typehints_format</span></code>: Формат отображения аннотаций типов. Установлен в <code class="docutils literal notranslate"><span class="pre">&quot;short&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autodoc_typehints</span></code>: Где отображать аннотации типов. Установлено в <code class="docutils literal notranslate"><span class="pre">&quot;description&quot;</span></code> (в описании).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">napoleon_*</span></code>: Настройки для расширения Napoleon (Google/NumPy docstrings).</p></li>
+</ul>
+<h3 id="myst-parser">Настройки MyST Parser<a class="headerlink" href="#myst-parser" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">myst_enable_extensions</span></code>: Список расширений MyST, включающих поддержку математики (<code class="docutils literal notranslate"><span class="pre">amsmath</span></code>, <code class="docutils literal notranslate"><span class="pre">dollarmath</span></code>), списков определений (<code class="docutils literal notranslate"><span class="pre">deflist</span></code>), зачеркивания (<code class="docutils literal notranslate"><span class="pre">strikethrough</span></code>), чекбоксов (<code class="docutils literal notranslate"><span class="pre">tasklist</span></code>) и т.д.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">myst_heading_anchors</span></code>: Уровень заголовков, для которых автоматически создаются якоря (ссылки). Установлено в <code class="docutils literal notranslate"><span class="pre">7</span></code>.</p></li>
+</ul>
+<h3 id="id7">Обработка исходных файлов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source_suffix</span></code>: Сопоставление расширений файлов с их типами (<code class="docutils literal notranslate"><span class="pre">.rst</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">restructuredtext</span></code>, <code class="docutils literal notranslate"><span class="pre">.md</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">markdown</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">templates_path</span></code>: Список директорий для поиска HTML-шаблонов Sphinx. Установлено в <code class="docutils literal notranslate"><span class="pre">[&quot;_templates&quot;]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exclude_patterns</span></code>: Список шаблонов имён файлов/директорий, которые будут исключены из сборки (например, <code class="docutils literal notranslate"><span class="pre">_build</span></code>, <code class="docutils literal notranslate"><span class="pre">.git</span></code>, <code class="docutils literal notranslate"><span class="pre">.venv</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code>: Язык документации. Установлен в <code class="docutils literal notranslate"><span class="pre">&quot;ru&quot;</span></code> (русский).</p></li>
+</ul>
+<h3 id="html-sphinx-immaterial">Настройки HTML-темы (sphinx_immaterial)<a class="headerlink" href="#html-sphinx-immaterial" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">html_theme</span></code>: Выбранная тема. Установлена в <code class="docutils literal notranslate"><span class="pre">&quot;sphinx_immaterial&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_theme_options</span></code>: Словарь с настройками темы, включая иконки, URL-адреса репозитория, функции навигации (<code class="docutils literal notranslate"><span class="pre">features</span></code>), цветовые схемы (<code class="docutils literal notranslate"><span class="pre">palette</span></code>), настройки версионирования (<code class="docutils literal notranslate"><span class="pre">version_dropdown</span></code>), социальные иконки (<code class="docutils literal notranslate"><span class="pre">social</span></code>) и т.д.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_context</span></code>: Контекстные переменные, часто используемые в шаблонах. Включают настройки для отображения ссылок на GitHub (<code class="docutils literal notranslate"><span class="pre">display_github</span></code>, <code class="docutils literal notranslate"><span class="pre">github_*</span></code>).</p></li>
+</ul>
+<h3 id="id8">Статические файлы<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">html_static_path</span></code>: Список директорий для поиска статических файлов (CSS, JS, изображения). Установлено в <code class="docutils literal notranslate"><span class="pre">[&quot;_static&quot;]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_js_files</span></code>: Список JS-файлов, которые будут включены в HTML.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_css_files</span></code>: Список CSS-файлов, которые будут включены в HTML (включая внешние, например, Font Awesome).</p></li>
+</ul>
+<h3 id="id9">Дополнительные настройки<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git_*</span></code>: Настройки для расширения, связанного с Git (например, <code class="docutils literal notranslate"><span class="pre">sphinx-git</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">togglebutton_*</span></code>: Настройки для расширения <code class="docutils literal notranslate"><span class="pre">sphinx-togglebutton</span></code>.</p></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="ref_cicd.html" class="md-footer__link md-footer__link--prev" aria-label="Назад: CI/CD">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                CI/CD
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="ref_tools.html" class="md-footer__link md-footer__link--next" aria-label="Вперед: tools/">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                tools/
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2025, maxlansky.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/jbms/sphinx-immaterial" target="_blank" rel="noopener" title="Source on github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/sphinx-immaterial/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.sections", "navigation.top", "navigation.footer", "search.share", "search.suggest", "toc.follow", "toc.sticky", "content.tabs.link", "content.code.copy", "content.action.edit", "content.action.view", "content.tooltips", "announce.dismiss"], "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "ReadTheDocs", "version": "https://sphinx-immaterial.rtfd.io"}, {"aliases": [], "title": "Github Pages", "version": "https://jbms.github.io/sphinx-immaterial"}], "versionPath": null}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Развернуть';</script>
+        <script>let toggleHintHide = 'Свернуть';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../_static/translations.js?v=cd1d70c9"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../_static/custom.js"></script>
+    
+  </body>
+</html>
