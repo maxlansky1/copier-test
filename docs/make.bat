@@ -23,6 +23,17 @@ if errorlevel 9009 (
 	exit /b 1
 )
 
+REM Check if sphinx-autobuild is available
+if "%1" == "livehtml" (
+    where sphinx-autobuild >nul 2>nul
+    if errorlevel 1 (
+        echo.sphinx-autobuild is not installed. Run 'pip install sphinx-autobuild' first.
+        exit /b 1
+    )
+    sphinx-autobuild %SOURCEDIR% %BUILDDIR%/html --open-browser --port=0
+    goto end
+)
+
 if "%1" == "" goto help
 
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%

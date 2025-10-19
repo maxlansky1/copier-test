@@ -1,0 +1,20 @@
+' --- Импорт всех иконок из diagrams/icons ---
+
+!include ../icons/book.puml
+!include ../icons/chrome.puml
+!include ../icons/cogs.puml
+!include ../icons/css3_wordmark.puml
+!include ../icons/database.puml
+!include ../icons/docker.puml
+!include ../icons/file.puml
+!include ../icons/folder_open.puml
+!include ../icons/git_wordmark.puml
+!include ../icons/github_badge.puml
+!include ../icons/html5_wordmark.puml
+!include ../icons/javascript_badge.puml
+!include ../icons/powershell.puml
+!include ../icons/python.puml
+!include ../icons/redis_wordmark.puml
+!include ../icons/telegram.puml
+!include ../icons/tools.puml
+!include ../icons/vscode_wordmark.puml

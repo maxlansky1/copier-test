@@ -1,0 +1,59 @@
+@startuml name corePyDetailedArchitecture
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/main/icons/devicons
+!define ICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+
+!include DEVICONS/python.puml
+!include DEVICONS/database.puml
+
+skinparam defaultFontName "Source Code Pro"
+skinparam defaultFontSize 12
+skinparam defaultTextAlignment center
+skinparam rectangle {
+    FontStyle bold
+    FontColor black
+}
+skinparam arrow {
+    FontColor black
+}
+
+' --- Цвета ---
+!define ENGINE_COLOR #4dabf7
+!define SESSION_COLOR #ff922b
+!define FACTORY_COLOR #69db7c
+!define DECORATOR_COLOR #da77f2
+!define DB_COLOR #74c0fc
+
+' --- Стили ---
+AddElementTag("engine", $bgColor=ENGINE_COLOR, $fontColor="white", $borderColor="#1864ab")
+AddElementTag("session", $bgColor=SESSION_COLOR, $fontColor="white", $borderColor="#e8590c")
+AddElementTag("factory", $bgColor=FACTORY_COLOR, $fontColor="black", $borderColor="#2b8a3e")
+AddElementTag("decorator", $bgColor=DECORATOR_COLOR, $fontColor="white", $borderColor="#862e9c")
+AddElementTag("db", $bgColor=DB_COLOR, $fontColor="black", $borderColor="#1c7ed6")
+
+LAYOUT_LEFT_RIGHT()
+
+hide stereotype
+
+' --- Внешняя БД ---
+System_Ext(db, "SQLite", "Файловая БД", $tags="db", $sprite="database")
+
+' --- Core.py ---
+Container_Boundary(core_boundary, "core.py", "SQLAlchemy Core", $tags="code") {
+  Container(engine, "Engine", "Python", "Движок", $tags="engine", $sprite="python")
+  Container(session_factory, "async_session", "Python", "Фабрика сессий", $tags="factory", $sprite="python")
+  Container(connection_decorator, "@connection", "Python", "Декоратор", $tags="decorator", $sprite="python")
+
+  ' --- Сессия (порождается фабрикой) ---
+  Container(session, "AsyncSession", "Python", "Экземпляр сессии", $tags="session", $sprite="python")
+}
+
+' ===== Отношения =====
+Rel(engine, db, "Подключается к БД", "aiosqlite")
+Rel(session_factory, engine, "Использует движок", "Для создания сессий")
+Rel(session_factory, session, "Порождает", "Экземпляры")
+Rel(connection_decorator, session, "Управляет сессией", "Создание, транзакции, закрытие")
+Rel(session, engine, "Выполняет запросы", "Через движок")
+
+@enduml

@@ -1,27 +1,22 @@
 """
-Пример ORM-модели пользователя.
+ORM-модель пользователя.
 
-Содержит:
-- User — модель пользователя
+Содержит поля:
+- username: уникальное имя пользователя
+- email: уникальный email
 """
 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
-from ...sqlite.core import Base
+
+from .base import Base
 
 
 class User(Base):
     """
     ORM-модель пользователя.
-
-    Атрибуты:
-        id (int): Уникальный идентификатор
-        username (str): Имя пользователя
-        email (str): Email пользователя
     """
-    __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     username: Mapped[str] = mapped_column(String, unique=True, index=True)
     email: Mapped[str] = mapped_column(String, unique=True, index=True)
 

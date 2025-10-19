@@ -1,0 +1,16 @@
+' --- Теги для границ (boundaries) по функциональному назначению ---
+
+' === 1. Инфраструктурные границы (инфраструктура, хостинг, VPS, облако) ===
+AddBoundaryTag("infrastructure", $bgColor="#f4faffff", $fontColor="black", $borderColor="#4dabf7", $borderStyle=DashedLine(), $borderThickness=2, $legendText="Infrastructure Boundary")
+
+' === 2. Внешние системы (внешние сервисы, API, сторонние системы) ===
+AddBoundaryTag("external", $bgColor="#f9f4ffff", $fontColor="black", $borderColor="#9146ff", $borderStyle=DashedLine(), $borderThickness=2, $legendText="External Boundary")
+
+' === 3. Конфигурационные границы (настройки, конфиги, секреты) ===
+AddBoundaryTag("utility", $bgColor="#f6f6f6ff", $fontColor="black", $borderColor="#6c757dff", $borderStyle=DashedLine(), $borderThickness=1, $legendText="Utility Boundary")
+
+' === 4. Разработка и CI/CD (сборка, тестирование, деплой) ===
+AddBoundaryTag("ci-cd", $bgColor="#fffaf4ff", $fontColor="black", $borderColor="#ff9500", $borderStyle=DashedLine(), $borderThickness=2, $legendText="CI/CD Boundary")
+
+' === 5. Проектные компоненты (основные части проекта, модули, сервисы) ===
+AddBoundaryTag("project", $bgColor="#f1fff5ff", $fontColor="black", $borderColor="#137333", $borderStyle=DashedLine(), $borderThickness=2, $legendText="Project Boundary")

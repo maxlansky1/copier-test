@@ -1,0 +1,30 @@
+@startuml daoGenericConcept
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+skinparam defaultFontName "Source Code Pro"
+skinparam defaultFontSize 12
+
+' --- Цвета ---
+AddElementTag("app", $bgColor="#d6336c", $fontColor="white", $borderColor="#960050")
+AddElementTag("dao", $bgColor="#be4bdb", $fontColor="white", $borderColor="#8f00b8")
+AddElementTag("db", $bgColor="#4dabf7", $fontColor="white", $borderColor="#1864ab")
+
+LAYOUT_LEFT_RIGHT()
+hide stereotype
+
+' --- Бизнес-логика ---
+Container(business_logic, "Business Logic", "Логика приложения", $tags="app")
+
+' --- DAO ---
+Container(data_access_object, "Data Access Object (DAO)", "Посредник для доступа к данным", $tags="dao")
+
+' --- База данных ---
+ContainerDb_Ext(database, "Database", "Хранилище данных", $tags="db")
+
+' --- Поток данных ---
+Rel(business_logic, data_access_object, "Запрашивает данные / Отправляет команды", "DAO скрывает реализацию доступа к БД")
+Rel(data_access_object, database, "Читает / Записывает", "DAO работает с БД (через ORM/SQL)")
+Rel(database, data_access_object, "Возвращает данные", "DAO получает данные из БД")
+Rel(data_access_object, business_logic, "Возвращает данные / Результат", "DAO предоставляет данные бизнес-логике")
+
+@enduml

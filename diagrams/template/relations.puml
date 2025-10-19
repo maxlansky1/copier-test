@@ -1,0 +1,19 @@
+' --- Теги для связей (релейшенов) по типу взаимодействия ---
+
+' === 1. Вызовы и запросы (работа по сети, запросы ко внешним источникам) ===
+AddRelTag("calls", $textColor="black", $lineColor="#1777ddff", $lineStyle=SolidLine(), $lineThickness=2, $legendText="Calls & Requests")
+
+' === 2. Данные (чтение, запись, сохранение, удаление локально) ===
+AddRelTag("data", $textColor="black", $lineColor="#35a111ff", $lineStyle=SolidLine(), $lineThickness=4, $legendText="Data Operations")
+
+' === 3. Служебные (конфиг, логирование, тестирование, кэширование итд) ===
+AddRelTag("utility", $textColor="black", $lineColor="#6c757d", $lineStyle=DashedLine(), $lineThickness=1, $legendText="Utility Operations")
+
+' === 4. Инфраструктура (деплой, сборка, мониторинг итд) ===
+AddRelTag("infrastructure", $textColor="black", $lineColor="#e78f48ff", $lineStyle=DashedLine(), $lineThickness=2, $legendText="Infrastructure")
+
+' === 5. Событийные/асинхронные (публикация, подписка, обработка событий) ===
+AddRelTag("events", $textColor="black", $lineColor="#7f54cfff", $lineStyle=DottedLine(), $lineThickness=2, $legendText="Events & Async")
+
+' === 6. Зависимости (импорт, use, include) ===
+AddRelTag("dependency", $textColor="black", $lineColor="#adb5bd", $lineStyle=DashedLine(), $lineThickness=1, $legendText="Dependency")

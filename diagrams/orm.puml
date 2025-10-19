@@ -1,0 +1,63 @@
+@startuml name ormArchitectureCoreUpdated
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' --- Иконки --- 
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/main/icons/devicons
+!include DEVICONS/code.puml
+!include DEVICONS/uikit.puml
+!include DEVICONS/terminal.puml
+!include DEVICONS/database.puml
+
+skinparam defaultFontName "Source Code Pro"
+skinparam defaultFontSize 12
+skinparam rectangle {
+  FontStyle bold
+  FontColor black
+}
+skinparam arrow {
+  FontColor black
+}
+
+' --- Цвета ---
+!define BASE_COLOR #9775fa
+!define MODEL_COLOR #4dabf7
+!define COLUMN_COLOR #ff922b
+!define OBJECT_COLOR #69db7c
+!define ORM_COLOR #da77f2
+!define DB_COLOR #74c0fc
+!define ENGINE_COLOR #495057
+
+' --- Стили ---
+AddElementTag("base", $bgColor=BASE_COLOR, $fontColor="white", $borderColor="#5f3dc4")
+AddElementTag("model", $bgColor=MODEL_COLOR, $fontColor="white", $borderColor="#1864ab")
+AddElementTag("column", $bgColor=COLUMN_COLOR, $fontColor="white", $borderColor="#e8590c")
+AddElementTag("object", $bgColor=OBJECT_COLOR, $fontColor="black", $borderColor="#2b8a3e")
+AddElementTag("orm", $bgColor=ORM_COLOR, $fontColor="white", $borderColor="#862e9c")
+AddElementTag("db", $bgColor=DB_COLOR, $fontColor="black", $borderColor="#1c7ed6")
+AddElementTag("engine", $bgColor=ENGINE_COLOR, $fontColor="white", $borderColor="#212529")
+
+LAYOUT_LEFT_RIGHT()
+hide stereotype
+
+' --- ORM boundary ---
+System_Boundary(orm_boundary, "SQLAlchemy ORM", $tags="orm") {
+  Container(base, "Base", "Каркас модели", "Определяет общие атрибуты моделей (id, __tablename__...)", $tags="base", $sprite="terminal")
+  Container(user_model, "User", "Модель", "ORM-модель: описывает таблицу users", $tags="model", $sprite="code")
+  Container(column, "Колонки (id, username, email)", "Поля модели", "Атрибуты модели (соответствуют полям таблицы)", $tags="column", $sprite="code")
+  Container(user_object, "Объект User", "Экземпляр модели", "Хранит значения колонок до записи в БД", $tags="object", $sprite="uikit")
+}
+
+' --- Таблица и движок ---
+ContainerDb(table, "Таблица users", "ORM Table / MetaData", "Структура таблицы", $tags="db", $sprite="database")
+System_Ext(engine, "Engine", "SQLAlchemy Core", $tags="engine", $sprite="terminal")
+System_Ext(db, "SQLite", $tags="db", $sprite="database")
+
+' --- Связи ---
+Rel(user_model, base, "Наследует", "DeclarativeBase")
+Rel(user_model, column, "Содержит", "class attributes")
+Rel(user_model, user_object, "Создает", "User(id=..., ...)")
+Rel(user_object, table, "Попадает в")
+Rel(table, engine, "Обрабатывается")
+Rel(engine, db, "Выполняет транзакции", "CRUD операции")
+
+@enduml

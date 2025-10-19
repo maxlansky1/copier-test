@@ -1,0 +1,53 @@
+@startuml name pydanticFlowLRImproved
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/main/icons/devicons
+!include DEVICONS/python.puml
+
+skinparam defaultFontName "Source Code Pro"
+skinparam defaultFontSize 12
+skinparam rectangle {
+    FontStyle bold
+    FontColor black
+}
+skinparam arrow {
+    FontColor black
+}
+
+' --- Цвета ---
+AddElementTag("orm", $bgColor="#4dabf7", $fontColor="white", $borderColor="#1864ab")
+AddElementTag("pydantic", $bgColor="#ff922b", $fontColor="black", $borderColor="#e8590c")
+AddElementTag("client", $bgColor="#69db7c", $fontColor="black", $borderColor="#2b8a3e")
+AddElementTag("service", $bgColor="#d6336c", $fontColor="white", $borderColor="#960050")
+
+LAYOUT_LEFT_RIGHT()
+hide stereotype
+
+' --- Внешний клиент ---
+System_Ext(client, "Client / API", "Веб-клиент или внешний сервис", $tags="client")
+
+' --- Граница приложения ---
+Container_Boundary(app_boundary, "Application Layer", "Слой приложения") {
+
+    ' --- Pydantic (единый блок) ---
+    Container_Boundary(pydantic_block, "Pydantic Schemas", "Валидация и сериализация данных", $tags="pydantic") {
+        Container(user_request, "UserCreateRequest", "Pydantic Schema", "Валидация входящих данных", $tags="pydantic", $sprite="python")
+        Container(user_response, "UserResponse", "Pydantic Schema", "Сериализация ORM → JSON", $tags="pydantic", $sprite="python")
+    }
+
+    ' --- Сервисный слой ---
+    Container(user_service, "UserService", "Python Service", "Обработка бизнес-логики", $tags="service", $sprite="python")
+
+    ' --- ORM модель ---
+    Container(user_model, "User Model", "SQLAlchemy ORM", "ORM-модель таблицы User", $tags="orm", $sprite="python")
+}
+
+' --- Поток данных (слева-направо) ---
+Rel(client, user_request, "1. Валидация")
+Rel(user_request, user_service, "2. Возвращает валидированный объект")
+Rel(user_service, user_model, "3. Запрашивает ORM")
+Rel(user_model, user_response, "4. Сериализация")
+Rel(user_response, user_service, "5. Возвращает сериализованный объект")
+Rel(user_service, client, "6. Отправляет запрос")
+
+@enduml

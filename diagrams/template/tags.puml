@@ -1,0 +1,19 @@
+' --- Универсальные стили контейнеров ---
+AddElementTag("config", $bgColor="#e0e0e0", $fontColor="black", $borderColor="#b0b0b0", $legendText="Config")
+AddElementTag("data", $bgColor="#cfe2ff", $fontColor="black", $borderColor="#9ec5fe", $legendText="Data")
+AddElementTag("code", $bgColor="#d2f4ea", $fontColor="black", $borderColor="#8fdcc1", $legendText="Code")
+AddElementTag("utils", $bgColor="#ffe5e5", $fontColor="black", $borderColor="#e59898", $legendText="Utils")
+AddElementTag("docs", $bgColor="#fff1d0", $fontColor="black", $borderColor="#ffd27f", $legendText="Docs")
+AddElementTag("tests", $bgColor="#fcd5ce", $fontColor="black", $borderColor="#f08080", $legendText="Tests")
+AddElementTag("ci", $bgColor="#d0e2ff", $fontColor="black", $borderColor="#89b4f8", $legendText="CI/CD")
+AddElementTag("docker", $bgColor="#f5e6cc", $fontColor="black", $borderColor="#d1b37f", $legendText="Docker")
+AddElementTag("api", $bgColor="#d1ecf1", $fontColor="black", $borderColor="#87c1d4", $legendText="API")
+AddElementTag("logging", $bgColor="#fff3cd", $fontColor="black", $borderColor="#ffdf7e", $legendText="Logging")
+AddElementTag("external", $bgColor="#e2d5f9", $fontColor="black", $borderColor="#c0a6f3", $legendText="External")
+AddElementTag("misc", $bgColor="#e9ecef", $fontColor="black", $borderColor="#adb5bd", $legendText="Misc")
+
+' --- Дополнительные теги для будущего использования ---
+AddElementTag("security", $bgColor="#f8d7da", $fontColor="black", $borderColor="#c6c8ca", $legendText="Security")
+AddElementTag("monitoring", $bgColor="#d1f2eb", $fontColor="black", $borderColor="#a3d9c9", $legendText="Monitoring")
+AddElementTag("cache", $bgColor="#e2e3e5", $fontColor="black", $borderColor="#b1b1b3", $legendText="Cache")
+AddElementTag("database", $bgColor="#d1ecf1", $fontColor="black", $borderColor="#87c1d4", $legendText="Database")

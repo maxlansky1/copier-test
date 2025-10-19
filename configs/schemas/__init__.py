@@ -2,38 +2,31 @@
 Пакет схем конфигурации Pydantic.
 """
 
-from .ai import (
-    AssemblyAISettings,
-    ElevenLabsSettings,
-    OpenRouterSettings,
-)
+from src.utils.logger import get_logger
+
+from .ai import AssemblyAISettings, ElevenLabsSettings, OpenRouterSettings
 from .base import BaseConfig
-from .database import (
-    DatabaseSettings,
-    SQLiteSettings,
-    RedisSettings,
-    VectorDBSettings,
-)
 from .file_processing import MediaProcessingSettings
-from .storage import StorageSettings
-from .telegram import TelegramSettings
+from .storage import StorageSettings  # noqa: F401
+from .telegram import TelegramSettings  # noqa: F401
+
+logger = get_logger(__name__)
 
 __all__ = [
     # AI
     "AssemblyAISettings",
-    "ElevenLabsSettings", 
+    "ElevenLabsSettings",
     "OpenRouterSettings",
     # Base
     "BaseConfig",
     # Database
     "DatabaseSettings",
     "SQLiteSettings",
-    "RedisSettings", 
+    "RedisSettings",
     "VectorDBSettings",
     # File Processing
     "MediaProcessingSettings",
-    # Storage
-    "StorageSettings",
-    # Telegram
-    "TelegramSettings",
+    "SQLiteSettings",
 ]
+
+logger.debug("Конфигурационные модели загружены")

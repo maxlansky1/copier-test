@@ -27,7 +27,7 @@ class TelegramSettings(BaseConfig):
     """
 
     token: str = Field(
-        ...,
+        default="1234567890",
         alias="TELEGRAM_BOT_TOKEN",
         description=(
             "Токен Telegram бота для аутентификации в Telegram Bot API. "

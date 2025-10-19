@@ -1,28 +1,20 @@
-# TODO
 ## 🐳 Docker
-- [ ] Автоматизировать `Dockerfile` — чтобы в зависимости от содержимого `requirements.txt` скрипт определял, какие зависимости нужны и добавлял их к `python 3.11 slim` (например, если в requirements есть matplotlib, для него нужны дополнительные библиотеки в самом питоне)
 - [ ] Доделать линтеры Make, Docker, GitHub
 - [ ] Hadolint (docker)
-- [ ] Доделать CI/CD
-- [ ] Проблемы с кодировкой логов при `docker logs`
 
 ## 📦 CI/CD и Автоматизация
 - [ ] Управление шаблоном через copier
-- [x] Улучшить `pre-commit`
-- [ ] Улучшить `diagram_auto_update` — он должен автоматически определять корень текущего проекта (может, убрать его вообще?)
-- [ ] Улучшить `deploy_app`
-  - [ ] на данный момент есть проблемы, т.к `ssh-action` не отдает переменные в ENV → не получается отправить в телеграм выводы команд из консоли 
-  - [ ] дважды пересобирает при `make rebuild`
-  - [ ] улучшить фильтр на событие push - не всегда нужно пересобирать контейнер
+- [ ] Переписать deploy_app и deploy_docs под новые правила гитхаб (https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)
 
 ## 📄 Документация и диаграммы
 - [ ] Доделать Sphinx
   - [x] внедрить plantuml?
   - [ ] сделать красивое оформление Make и Docker в документации
-  - [ ] посмотреть примеры топ компаний
+  - [ ] изменить тему на https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html
 - [x] Настроить деплой на GitHub Pages
   - [x] отредактировать размер диаграммы
-- Добавить CHANGELOG.md (https://keepachangelog.com/en/1.1.0/)
+- [ ] Добавить CHANGELOG.md (https://keepachangelog.com/en/1.1.0/)
+#TODO: сравнить [генераторы документации] (https://en.wikipedia.org/wiki/Comparison_of_documentation_generators)
 
 ## 🧪 Тестирование
 - [ ] Сделать тесты и покрытие (unittest, pytest)
@@ -30,6 +22,7 @@
 ## 🛠 Инструменты и настройки
 - [ ] EditorConfig — настройки для текстовых редакторов. Пока необязательно, в будущем может быть полезно
 - [ ] Управление зависимостями - uv? pip? poetry? pyproject.toml
+- [ ] Логирование - пересобрать логгер
  
 ## 📝 TODO
 - [ ] Сделать нормальный TODO
@@ -54,3 +47,6 @@ https://www.libhunt.com/
 
 Пример управления проектом
 https://blog.dusktreader.dev/2025/04/06/bootstrapping-python-projects-with-copier/#to-github
+
+OpenGraph - настройка сайта для шеринга в соцсетях
+https://habr.com/ru/companies/click/articles/492258/

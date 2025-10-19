@@ -7,12 +7,10 @@
 
 from pathlib import Path
 
-from pydantic import Field
-
-from configs.schemas.base import BaseConfig
+from pydantic import BaseModel, Field
 
 
-class StorageSettings(BaseConfig):
+class StorageSettings(BaseModel):
     """
     Настройки хранилища и путей.
 
@@ -27,5 +25,9 @@ class StorageSettings(BaseConfig):
             "Корневая директория проекта. Используется как базовый путь "
             "для вычисления всех остальных директорий приложения."
         ),
-        examples=[Path("/home/user/BillyMilliganBot")],
+    )
+
+    data_dir: Path = Field(
+        default_factory=lambda: Path(__file__).parent.parent.parent / "data",
+        description=("Директория для хранения данных (включая БД)"),
     )

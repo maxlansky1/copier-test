@@ -1,0 +1,115 @@
+@startuml sphinx_workflow_explained_with_chapter_and_extensions_group_and_build_script
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml 
+
+' --- Дополнительные определения и стили ---
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/main/icons/devicons
+!define ICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+
+!include DEVICONS/python.puml
+!include DEVICONS/terminal.puml
+!include DEVICONS/javascript.puml
+!include DEVICONS/css3.puml
+!include DEVICONS/html5.puml
+
+!include ICONS/file.puml
+!include ICONS/folder.puml
+!include ICONS/markdown.puml
+
+skinparam defaultFontName "Source Code Pro"
+skinparam defaultFontSize 12
+skinparam defaultTextAlignment center
+skinparam rectangle {
+    FontStyle bold
+    FontColor black
+}
+skinparam arrow {
+    FontColor black
+}
+
+' Яркие стили для тегов
+AddElementTag("source", $bgColor="#FFD43B", $fontColor="black", $borderColor="#d4a72c")
+AddElementTag("config", $bgColor="#FF6B6B", $fontColor="white", $borderColor="#ff2e2e")
+AddElementTag("build_artifact", $bgColor="#69db7c", $fontColor="black", $borderColor="#2b8a3e")
+AddElementTag("tool", $bgColor="#ff922b", $fontColor="black", $borderColor="#e8590c")
+AddElementTag("theme", $bgColor="#E599F7", $fontColor="black", $borderColor="#c16eaf")
+AddElementTag("extension", $bgColor="#845EF7", $fontColor="white", $borderColor="#5c3bb7")
+AddElementTag("static", $bgColor="#adb5bd", $fontColor="black", $borderColor="#495057")
+AddElementTag("script", $bgColor="#74C0FC", $fontColor="black", $borderColor="#339af0")
+
+LAYOUT_TOP_DOWN()
+hide stereotype
+
+' --- Основной контейнер проекта ---
+System_Boundary(docs_project, "Директория docs/", $tags="folder") {
+
+  ' --- Главы ---
+  Container_Boundary(chapter_example, "Разделы документации", "Условный файл главы", $tags="source") {
+    Container(chapter_md, "chapter.md", "Markdown", "Раздел документации", $tags="source", $sprite="markdown")
+    Container(index_rst, "index.rst", "reStructuredText", "Содержит разделы (rst дерево)", $tags="source", $sprite="file")
+  }
+
+  ' --- Конфигурация Sphinx ---
+  Container(conf_py, "conf.py", "Python", "Конфигурация Sphinx", $tags="config", $sprite="python")
+
+  ' --- Статические файлы ---
+  Container_Boundary(static, "_static/", "Статические файлы", $tags="static") {
+    Container(custom_css, "custom.css", "CSS", "Кастомные стили", $tags="static", $sprite="css3")
+    Container(custom_js, "custom.js", "JavaScript", "Кастомная логика", $tags="static", $sprite="javascript")
+  }
+
+  ' --- Шаблоны (редко используется) ---
+  Container(templates, "_templates/", "Папка", "Шаблоны Sphinx", $tags="folder", $sprite="folder")
+
+  ' --- Единый контейнер для скриптов сборки ---
+  Container(build_script, "Build Script", "Makefile / make.bat", "Скрипты сборки", $tags="script", $sprite="terminal")
+
+  ' --- Промежуточные и финальные артефакты ---
+  Container_Boundary(build, "_build/", "Артефакты сборки", $tags="build_artifact") {
+    Container_Boundary(doctrees, "doctrees/", "Промежуточные файлы", $tags="build_artifact") {
+      Container(index_doctree, "index.doctree", "Sphinx Internal", "AST для index.rst", $tags="build_artifact", $sprite="file")
+      Container(chapter_doctree, "chapter.doctree", "Sphinx Internal", "AST для chapter.md", $tags="build_artifact", $sprite="file")
+    }
+
+    Container_Boundary(html_output, "html/", "Сгенерированный HTML", $tags="build_artifact") {
+      Container(index_html, "index.html", "HTML", "Главная страница", $tags="build_artifact", $sprite="html5")
+      Container(chapter_html, "chapter.html", "HTML", "Страница главы", $tags="build_artifact", $sprite="html5")
+      Container(css_output, "custom.css", "CSS", "Копия из _static", $tags="build_artifact", $sprite="css3")
+      Container(js_output, "custom.js", "JavaScript", "Копия из _static", $tags="build_artifact", $sprite="javascript")
+    }
+  }
+}
+
+' --- Группа расширений ---
+Container_Boundary(extensions_group, "Sphinx", $tags="extension") {
+  Container(sphinx_tool, "Sphinx", "Инструмент генерации", $tags="tool")
+  Container(other_ext, "Расширения", "autodoc, plantuml, ...", $tags="extension", $sprite="doctrine")
+}
+
+' ===== Отношения =====
+
+' Скрипт сборки вызывает sphinx_tool и sphinx_autobuild
+Rel(sphinx_tool, build_script, "Вызывает", "make html/livehtml")
+
+' Sphinx читает конфигурацию
+Rel(sphinx_tool, conf_py, "Читает")
+
+' Sphinx обрабатывает исходные файлы (включая условную главу)
+Rel(sphinx_tool, chapter_example, "Рендерит")
+
+' Sphinx читает статические файлы
+Rel(conf_py, static, "Использует")
+
+' Sphinx генерирует промежуточные файлы (doctrees)
+Rel(index_rst, index_doctree, "Конвертируется в", "Внутреннее представление")
+Rel(chapter_md, chapter_doctree, "Конвертируется в", "Внутреннее представление")
+
+' Sphinx генерирует финальные HTML файлы
+Rel(index_doctree, index_html, "Рендерится в", "HTML")
+Rel(chapter_doctree, chapter_html, "Рендерится в", "HTML")
+
+' Копирование статических файлов в output
+Rel(custom_css, css_output, "Копируется в", "_build/html/")
+Rel(custom_js, js_output, "Копируется в", "_build/html/")
+
+@enduml

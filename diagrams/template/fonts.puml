@@ -1,0 +1,28 @@
+' --- Настройки шрифтов для диаграмм ---
+
+!define FONT_NAME Arial
+!define FONT_SIZE_DEFAULT 16
+!define FONT_COLOR_DEFAULT red
+
+' --- Общие шрифты ---
+skinparam defaultFontName FONT_NAME
+skinparam defaultFontSize FONT_SIZE_DEFAULT
+skinparam defaultFontColor FONT_COLOR_DEFAULT
+
+' --- Обновляем стили для всех C4-элементов ---
+UpdateElementStyle("container", $fontColor=FONT_COLOR_DEFAULT)
+UpdateElementStyle("external_container", $fontColor=FONT_COLOR_DEFAULT)
+UpdateBoundaryStyle("container", $fontColor=FONT_COLOR_DEFAULT)
+
+' --- Шрифты для стрелок ---
+skinparam Arrow {
+  FontName FONT_NAME
+  FontSize FONT_SIZE_DEFAULT - 2
+  FontColor FONT_COLOR_DEFAULT
+}
+
+' --- Шрифты для стереотипов ---
+skinparam stereotype {
+  FontSize FONT_SIZE_DEFAULT - 3
+  FontColor FONT_COLOR_DEFAULT
+}

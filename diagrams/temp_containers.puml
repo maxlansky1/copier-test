@@ -1,0 +1,7 @@
+@startuml
+
+
+Container_Boundary(src, "src (исходный код)", $tags="code") {
+}
+
+@enduml

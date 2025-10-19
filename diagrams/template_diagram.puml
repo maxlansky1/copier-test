@@ -1,0 +1,115 @@
+@startuml name projectTemplate
+!include template/C4_Container.puml
+
+!include template/tags.puml
+!include template/icons.puml
+!include template/relations.puml
+!include template/boundaries.puml
+
+skinparam defaultFontName "Source Code Pro"
+
+LAYOUT_TOP_DOWN()
+'LAYOUT_LEFT_RIGHT()
+
+' --- VPS ---
+Container_Boundary(VPS, "VPS", $tags="infrastructure") {
+  Container_Ext(app_1, "app", "Контейнер", "Приложение, развернутое в Docker на сервере", $tags="docker", $sprite="docker")
+}
+
+' --- GitHub ---
+Container_Boundary(GitHub, "GitHub", $tags="external") {
+  Container_Ext(github_pages, "GitHub Pages", "Сервис", "Для хостинга статической документации и сайта", $tags="docs", $sprite="github_badge")
+  Container_Ext(github_actions, "GitHub Actions", "CI/CD", "Для автоматизации процессов сборки, тестирования и деплоя", $tags="ci", $sprite="github_badge")
+  Container_Ext(github_secrets, "GitHub Secrets", "Хранилище", "Для безопасного хранения и управления секретами", $tags="config", $sprite="github_badge")
+}
+
+' --- projectTemplate ---
+Container_Boundary(projectTemplate, "projectTemplate", $tags="project") {
+
+  ' --- CI/CD ---
+  Container_Boundary(cicd, ".github/", "Workflows", $tags="ci-cd") {
+    Container(deploy_app, "deploy_app.yml", "YAML", "Воркфлоу для автоматического деплоя", $tags="ci", $sprite="github_badge")
+    Container(deploy_docs, "deploy_docs.yml", "YAML", "Воркфлоу для сборки документации", $tags="ci", $sprite="github_badge")
+    Container(makefile, "Makefile", "Автоматизация", "", $tags="utils", $sprite="tools")
+  }
+
+  ' --- vscode ---
+  Container_Boundary(vscode, ".vscode", "VSCode", $tags="utility") {
+    Container(extensions_json, "extensions.json", "JSON", "Расширения для VS Code", $tags="misc", $sprite="file")
+    Container(settings_json, "settings.json", "JSON", "Настройки для VS Code", $tags="misc", $sprite="file")
+  }
+
+  ' --- docker ---
+  Container_Boundary(docker, "Docker", "Docker", $tags="utility") {
+    Container(dockerfile, "Dockerfile", "Файл", "Инструкции для создания нового образа Docker", $tags="docker", $sprite="docker")
+    Container(docker_compose_yaml, "docker-compose.yaml", "Файл", "Система сборки, запуска, управления контейнерами Docker", $tags="docker", $sprite="docker")
+    Container(dockerignore, ".dockerignore", "", "Файлы и папки для игнора docker", $tags="misc", $sprite="file")
+  }
+
+  ' --- git ---
+  Container_Boundary(Git, ".git", "Git", $tags="utility") {
+    Container(gitignore, ".gitignore", "", "Файлы и папки для игнора git", $tags="misc", $sprite="file")
+    Container(copier_yaml, "copier.yaml", "Файл", "Позволяет обновлять проекты на основе шаблона", $tags="misc", $sprite="file")
+    Container(pre_commit, ".pre-commit-config.yaml", "Файл", "Проверяет коммиты перед пушем", $tags="misc", $sprite="file")
+  }
+
+  ' --- env ---
+  Container_Boundary(ENV, "env", "Окружение", $tags="utility") {
+    Container(env, ".env", "Переменные окружения", $tags="config", $sprite="file")
+    Container(requirements_txt, "requirements.txt", "Файл", "", $tags="misc", $sprite="file")
+  }
+
+  ' --- configs/ ---
+  Container_Boundary(configs, "configs", "Configs", $tags="utility") {
+    Container(config_py, "config.py", "Python", "Модуль для конфигурации приложения", $tags="config", $sprite="python")
+  }
+
+  ' --- docs/ ---
+  Container_Boundary(docs, "docs", "Docs", $tags="project") {
+    Container(index_rst, "index.rst", "reST", "Дерево документации", $tags="docs", $sprite="file")
+    Container(all_md, "Файлы Markdown", "Markdown", "Файлы с описанием документации", $tags="docs", $sprite="file")
+    Container(conf_py, "conf.py", "Python", "Настройки Sphinx", $tags="docs", $sprite="python")
+  }
+
+  ' --- src/ ---
+  Container_Boundary(src, "src", "Исходный код", $tags="project") {
+    Container(main_py, "main.py", "Python", "Точка входа в приложение", $tags="code", $sprite="python")
+  }
+
+  ' --- utils ---
+  Container_Boundary(utils, "utils", "Утилиты", $tags="project") {
+    Container(logger_py, "logger.py", "Python", "Модуль для записи логов приложения", $tags="utils", $sprite="python")
+  }
+
+  ' --- aux ---
+  Container_Boundary(aux, "aux", "Вспомогательные модули", $tags="project") {
+    Container(tests_folder, "tests/", "Папка", "Модули для тестирования", $tags="tests", $sprite="folder_open")
+    Container(tools_folder, "tools/", "Папка", "Вспомогательные модули", $tags="misc", $sprite="folder_open")
+  }
+}
+
+' ===== CI/CD Поток =====
+Rel(cicd, github_actions, "Выполняет workflow", "GitHub Runner", $tags="infrastructure")
+Rel(github_actions, app_1, "Разворачивает приложение", "SSH, Docker", $tags="infrastructure")
+Rel(github_actions, github_pages, "Разворачивает документацию на", "gh-pages branch", $tags="infrastructure")
+Rel(makefile, deploy_app, "Автоматизация сборки", "make build", $tags="infrastructure")
+
+' ===== Docker и Развертывание =====
+Rel(deploy_app, dockerfile, "Использует", "", $tags="infrastructure")
+Rel(dockerignore, dockerfile, "Исключает файлы", ".dockerignore rules", $tags="infrastructure")
+Rel(dockerfile, env, "Читает переменные окружения", "", $tags="utility")
+Rel(docker_compose_yaml, dockerfile, "Оркестрирует запуск", "docker-compose up", $tags="infrastructure")
+Rel(dockerfile, requirements_txt, "Устанавливает зависимости", "RUN pip install", $tags="infrastructure")
+
+' ===== Разработка =====
+Rel(config_py, src, "Настраивает приложение, управляет путями", "class Config", $tags="calls")
+Rel(config_py, env, "Читает переменные окружения", "", $tags="utility")
+Rel(logger_py, src, "Логирует приложение", "Python import", $tags="utility")
+
+' ===== Документация =====
+Rel(conf_py, index_rst, "Настраивает сборку документации", "Python config", $tags="utility")
+Rel(index_rst, all_md, "Включает в себя", "reST includes", $tags="calls")
+
+SHOW_LEGEND()
+
+@enduml
