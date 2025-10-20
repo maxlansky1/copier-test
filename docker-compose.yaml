@@ -72,4 +72,4 @@ services:
           memory: 256M
 
 volumes:
-  redis_
+  redis_:
