@@ -6,7 +6,7 @@ services:
   app:
     container_name: ${DOCKER_CONTAINER_NAME}
     build:
-      context: .             # Dockerfile в текущей директории
+      context: .
       dockerfile: Dockerfile
       args:
         UID: ${UID}
@@ -15,39 +15,53 @@ services:
         APP_NAME: ${APP_NAME}
         APP_PORT: ${APP_PORT}
 
-    command: python src/main.py  # можно переопределить стандартный CMD
+    command: python src/main.py
 
     volumes:
-      - .:/${APP_NAME}               # монтируем исходный код в контейнер
-      - ./data:/app/data             # монтируем папку с БД в контейнер
+      - .:/${APP_NAME}
 
     env_file:
-      - .env                 # переменные окружения (токены, настройки)
+      - .env
 
     ports:
-      - "${DOCKER_PORT}:${APP_PORT}"          # проброс портов (используется DOCKER_PORT из .env)
+      - "${DOCKER_PORT}:${APP_PORT}"
 
-    restart: unless-stopped  # автоперезапуск контейнера при сбоях
+    restart: unless-stopped
 
-    tty: true                # для корректной работы логов и bash-сессии
-    stdin_open: true         # возможность docker attach
+    tty: true
+    stdin_open: true
 
     environment:
       - PYTHONIOENCODING=utf-8
 
-    # depends_on:
-    #   - db                 # зависимости от других сервисов, если будут
+    depends_on:
+      redis:
+        condition: service_healthy  # ✅ Исправлено: ждать, пока Redis здоров
 
-# Пример для базы данных PostgreSQL (если понадобится)
-# db:
-#   image: postgres:15
-#   restart: unless-stopped
-#   environment:
-#     POSTGRES_USER: youruser
-#     POSTGRES_PASSWORD: yourpassword
-#     POSTGRES_DB: yourdb
-#   volumes:
-#     - pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
+    container_name: ${DOCKER_CONTAINER_NAME}_redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_/data
+    command: redis-server --requirepass ${REDIS_PASSWORD:-defaultpassword} --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-defaultpassword}", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
-# volumes:
-#   pgdata:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+volumes:
+  redis_

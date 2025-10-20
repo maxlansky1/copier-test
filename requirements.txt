@@ -32,3 +32,6 @@ alembic
 
 # Работа с медиа
 pillow
+
+#Redis
+redis
