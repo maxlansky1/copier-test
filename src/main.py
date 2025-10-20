@@ -1,43 +1,39 @@
 # src/main.py
 
 import asyncio
-
 import redis.asyncio as redis
-
 from configs.settings import settings
+from src.utils.logger import get_logger  # ✅ Импортируем логгер
+
+# Создаём логгер для main.py
+logger = get_logger(__name__)  # ✅ Создаём экземпляр логгера
 
 
 async def main():
-    print("🚀 Запуск приложения...")
+    logger.info("🚀 Запуск приложения...")  # ✅ Логируем через кастомный логгер
 
-    # Подключаемся к Redis, используя настройки из Pydantic
     redis_client = redis.from_url(
-        settings.database.redis.redis_url,  # URL из настроек
+        settings.database.redis.redis_url,
         db=settings.database.redis.redis_db,
-        password=settings.database.redis.redis_password,
-        decode_responses=settings.database.redis.decode_responses,  # удобно для строк
+        decode_responses=settings.database.redis.decode_responses,
     )
 
     try:
-        # Простая проверка подключения
         await redis_client.ping()
-        print("✅ Подключились к Redis")
+        logger.info("✅ Подключились к Redis")  # ✅ Логируем успех
 
-        # Пример: сохранить и получить значение
         cache_key = "tutorial_key"
-        cache_value = "Hello, Redis with Auth!"
+        cache_value = "Hello, Redis with Custom User!"
 
-        await redis_client.set(
-            cache_key, cache_value, ex=settings.database.redis.redis_ttl
-        )
+        await redis_client.set(cache_key, cache_value, ex=settings.database.redis.redis_ttl)
         retrieved_value = await redis_client.get(cache_key)
-        print(f"📦 Закешировали и получили: {retrieved_value}")
+        logger.info(f"📦 Закешировали и получили: {retrieved_value}")  # ✅ Логируем результат
 
     except Exception as e:
-        print(f"❌ Ошибка при работе с Redis: {e}")
+        logger.error(f"❌ Ошибка при работе с Redis: {e}")  # ✅ Логируем ошибку
     finally:
         await redis_client.aclose()
-        print("🔒 Закрыли соединение с Redis")
+        logger.info("🔒 Закрыли соединение с Redis")  # ✅ Логируем закрытие
 
 
 if __name__ == "__main__":

@@ -36,7 +36,7 @@ services:
 
     depends_on:
       redis:
-        condition: service_healthy  # ✅ Исправлено: ждать, пока Redis здоров
+        condition: service_healthy
 
   redis:
     image: redis:latest
@@ -46,9 +46,17 @@ services:
       - "${REDIS_PORT:-6379}:6379"
     volumes:
       - redis_/data
-    command: redis-server --requirepass ${REDIS_PASSWORD:-defaultpassword} --appendonly yes
+    command: >
+      sh -c '
+        mkdir -p /usr/local/etc/redis &&
+        echo "bind 127.0.0.1" > /usr/local/etc/redis/redis.conf &&
+        echo "appendonly yes" >> /usr/local/etc/redis/redis.conf &&
+        echo "appendfsync everysec" >> /usr/local/etc/redis/redis.conf &&
+        echo "user $REDIS_USER on >$REDIS_USER_PASSWORD allcommands allkeys" > /usr/local/etc/redis/users.acl &&
+        redis-server /usr/local/etc/redis/redis.conf --aclfile /usr/local/etc/redis/users.acl
+      '
     healthcheck:
-      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-defaultpassword}", "ping"]
+      test: ["CMD", "redis-cli", "-u", "redis://${REDIS_USER}:${REDIS_USER_PASSWORD}@127.0.0.1:6379", "ping"]
       interval: 30s
       timeout: 10s
       retries: 3

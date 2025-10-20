@@ -1,3 +1,5 @@
+# configs/schemas/databases.py
+
 """
 Схемы конфигурации для баз данных.
 """
@@ -37,18 +39,19 @@ class RedisSettings(BaseConfig):
 
     redis_url: str = Field(
         default="redis://default:password@redis:6379/0",
-        description="URL подключения к Redis. В Docker используй имя сервиса: redis://default:password@redis:6379/0",
+        description="URL подключения к Redis. В Docker используй имя сервиса: redis://user:password@redis:6379/0"
     )
-    redis_db: int = Field(default=0, description="Номер базы Redis (0-15)")
-    redis_password: str | None = Field(
-        default=None, description="Пароль для Redis (если не указан в URL)"
+    redis_db: int = Field(
+        default=0,
+        description="Номер базы Redis (0-15)"
     )
     redis_ttl: int = Field(
-        default=3600, description="Время жизни ключей по умолчанию в секундах"
+        default=3600,
+        description="Время жизни ключей по умолчанию в секундах"
     )
     decode_responses: bool = Field(
         default=True,
-        description="Декодировать ответы Redis в строки (удобно для работы с текстовыми данными)",
+        description="Декодировать ответы Redis в строки (удобно для работы с текстовыми данными)"
     )
 
 
