@@ -1672,7 +1672,7 @@
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
 <span class="w">      </span><span class="no">sh -c &#39;</span>
 <span class="w">        </span><span class="no">mkdir -p /usr/local/etc/redis &amp;&amp;</span>
-<span class="w">        </span><span class="no">echo &quot;bind 127.0.0.1&quot; &gt; /usr/local/etc/redis/redis.conf &amp;&amp;</span>
+<span class="w">        </span><span class="no">echo &quot;bind 0.0.0.0&quot; &gt; /usr/local/etc/redis/redis.conf &amp;&amp;</span>
 <span class="w">        </span><span class="no">echo &quot;appendonly yes&quot; &gt;&gt; /usr/local/etc/redis/redis.conf &amp;&amp;</span>
 <span class="w">        </span><span class="no">echo &quot;appendfsync everysec&quot; &gt;&gt; /usr/local/etc/redis/redis.conf &amp;&amp;</span>
 <span class="w">        </span><span class="no">echo &quot;user $REDIS_USER on &gt;$REDIS_USER_PASSWORD allcommands allkeys&quot; &gt; /usr/local/etc/redis/users.acl &amp;&amp;</span>
