@@ -1629,7 +1629,7 @@
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${DOCKER_CONTAINER_NAME}</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w">             </span><span class="c1"># Dockerfile в текущей директории</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">UID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${UID}</span>
@@ -1638,42 +1638,64 @@
 <span class="w">        </span><span class="nt">APP_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APP_NAME}</span>
 <span class="w">        </span><span class="nt">APP_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APP_PORT}</span>
 
-<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/main.py</span><span class="w">  </span><span class="c1"># можно переопределить стандартный CMD</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/main.py</span>
 
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/${APP_NAME}</span><span class="w">               </span><span class="c1"># монтируем исходный код в контейнер</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data:/app/data</span><span class="w">             </span><span class="c1"># монтируем папку с БД в контейнер</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/${APP_NAME}</span>
 
 <span class="w">    </span><span class="nt">env_file</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span><span class="w">                 </span><span class="c1"># переменные окружения (токены, настройки)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
 
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${DOCKER_PORT}:${APP_PORT}&quot;</span><span class="w">          </span><span class="c1"># проброс портов (используется DOCKER_PORT из .env)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${DOCKER_PORT}:${APP_PORT}&quot;</span>
 
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span><span class="w">  </span><span class="c1"># автоперезапуск контейнера при сбоях</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 
-<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                </span><span class="c1"># для корректной работы логов и bash-сессии</span>
-<span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">         </span><span class="c1"># возможность docker attach</span>
+<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PYTHONIOENCODING=utf-8</span>
 
-<span class="w">    </span><span class="c1"># depends_on:</span>
-<span class="w">    </span><span class="c1">#   - db                 # зависимости от других сервисов, если будут</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">redis</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
 
-<span class="c1"># Пример для базы данных PostgreSQL (если понадобится)</span>
-<span class="c1"># db:</span>
-<span class="c1">#   image: postgres:15</span>
-<span class="c1">#   restart: unless-stopped</span>
-<span class="c1">#   environment:</span>
-<span class="c1">#     POSTGRES_USER: youruser</span>
-<span class="c1">#     POSTGRES_PASSWORD: yourpassword</span>
-<span class="c1">#     POSTGRES_DB: yourdb</span>
-<span class="c1">#   volumes:</span>
-<span class="c1">#     - pgdata:/var/lib/postgresql/data</span>
+<span class="w">  </span><span class="nt">redis</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${DOCKER_CONTAINER_NAME}_redis</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${REDIS_PORT:-6379}:6379&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis_/data</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">sh -c &#39;</span>
+<span class="w">        </span><span class="no">mkdir -p /usr/local/etc/redis &amp;&amp;</span>
+<span class="w">        </span><span class="no">echo &quot;bind 127.0.0.1&quot; &gt; /usr/local/etc/redis/redis.conf &amp;&amp;</span>
+<span class="w">        </span><span class="no">echo &quot;appendonly yes&quot; &gt;&gt; /usr/local/etc/redis/redis.conf &amp;&amp;</span>
+<span class="w">        </span><span class="no">echo &quot;appendfsync everysec&quot; &gt;&gt; /usr/local/etc/redis/redis.conf &amp;&amp;</span>
+<span class="w">        </span><span class="no">echo &quot;user $REDIS_USER on &gt;$REDIS_USER_PASSWORD allcommands allkeys&quot; &gt; /usr/local/etc/redis/users.acl &amp;&amp;</span>
+<span class="w">        </span><span class="no">redis-server /usr/local/etc/redis/redis.conf --aclfile /usr/local/etc/redis/users.acl</span>
+<span class="w">      </span><span class="no">&#39;</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;redis-cli&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-u&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;redis://${REDIS_USER}:${REDIS_USER_PASSWORD}@127.0.0.1:6379&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">start_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
 
-<span class="c1"># volumes:</span>
-<span class="c1">#   pgdata:</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.50&#39;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512M</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.25&#39;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256M</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">redis_</span>
 </code></pre></div>
 </div>
 </div>
