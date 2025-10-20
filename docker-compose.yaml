@@ -49,7 +49,7 @@ services:
     command: >
       sh -c '
         mkdir -p /usr/local/etc/redis &&
-        echo "bind 127.0.0.1" > /usr/local/etc/redis/redis.conf &&
+        echo "bind 0.0.0.0" > /usr/local/etc/redis/redis.conf &&
         echo "appendonly yes" >> /usr/local/etc/redis/redis.conf &&
         echo "appendfsync everysec" >> /usr/local/etc/redis/redis.conf &&
         echo "user $REDIS_USER on >$REDIS_USER_PASSWORD allcommands allkeys" > /usr/local/etc/redis/users.acl &&
